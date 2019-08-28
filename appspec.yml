@@ -12,6 +12,9 @@ hooks:
   BeforeInstall:
     - location: scripts/stop_nginx.sh
       runas: root
+  ApplicationStart:
+    - location: scripts/changepermission.sh
+      timeout: 3600 
   AfterInstall:
     - location: scripts/start_nginx.sh
       timeout: 180
