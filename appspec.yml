@@ -3,9 +3,9 @@ os: linux
 
 files:
   - source: code/
-    destination: /var/www/html/app/code
+    destination: /var/www/html/app/code/
   - source: design/
-    destination: /var/www/html/app/design
+    destination: /var/www/html/app/design/
     
 
 hooks:
