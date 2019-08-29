@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 
 files:
-  - source: /
+  - source: ./code
     destination: /var/www/html/app/code/
   - source: ./design
     destination: /var/www/html/app/design/
