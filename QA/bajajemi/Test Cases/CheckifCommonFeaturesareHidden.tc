@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TestCaseEntity>
-   <description>This test case is used to verify if the Hide Common features button is working appropriately or not..</description>
-   <name>CheckifCommonFeaturesareHidden</name>
-   <tag></tag>
-   <comment></comment>
-   <testCaseGuid>f95ff56a-726b-4d2a-bc27-43fad8b3bad3</testCaseGuid>
-</TestCaseEntity>

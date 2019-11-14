@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TestCaseEntity>
-   <description>After removing the Product from the Compare Page and Moving to the Mobiles and Electronics Section we can again add a Product from the Compare Page and tha verify the Product Count.</description>
-   <name>RemovingAllTheProductsFromComparePopup</name>
-   <tag></tag>
-   <comment></comment>
-   <testCaseGuid>74692d5c-d6c7-4f3d-a491-52ae9ff432b1</testCaseGuid>
-</TestCaseEntity>

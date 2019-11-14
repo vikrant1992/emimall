@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TestCaseEntity>
-   <description>Verify Whether Items Are Already In Wishlist for a logged in Customer. If present we can verify the Count and there remove the items and verify the empty wishlist Messages.</description>
-   <name>VerifyWhetherItemsAreAlreadyInWishlist</name>
-   <tag></tag>
-   <comment></comment>
-   <testCaseGuid>f82d7716-6e59-4992-9ee5-e4a76b529211</testCaseGuid>
-</TestCaseEntity>

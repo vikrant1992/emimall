@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TestCaseEntity>
-   <description>Here we are testing if the name is updated whether that is reflected appropriately in all the different integration pages.</description>
-   <name>UpdateFirstLastName</name>
-   <tag></tag>
-   <comment></comment>
-   <testCaseGuid>a7065724-05dc-45a0-ae12-3fe5dff5c90c</testCaseGuid>
-</TestCaseEntity>

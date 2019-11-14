@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TestCaseEntity>
-   <description>This test case is used to verify if the product is getting searched with Full Name and than verifying the Name of the Product on the PDP page.</description>
-   <name>FullNameSearch</name>
-   <tag></tag>
-   <comment></comment>
-   <testCaseGuid>f42d3ffc-beb3-4bb4-bbe2-b3cf08c9c966</testCaseGuid>
-</TestCaseEntity>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TestCaseEntity>
-   <description>Verifying if the nos. of products added to compare are appropriate or not.</description>
-   <name>AddingproductstoCompare</name>
-   <tag></tag>
-   <comment></comment>
-   <testCaseGuid>06bc3e06-63cb-48fa-b8d6-6c11c0c7de3e</testCaseGuid>
-</TestCaseEntity>

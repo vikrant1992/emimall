@@ -1,7 +1,0 @@
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-   <update handle="ajaxscroll"/>
-    <head>
-        <script src="js/plp_page.js"/>
-        <script src="js/common_functionality.js"/>
-    </head>
-</page>

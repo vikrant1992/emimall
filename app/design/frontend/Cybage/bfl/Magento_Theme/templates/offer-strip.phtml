@@ -1,8 +1,0 @@
-<?php $customerData = $block->getCustomerSessionData();?>
-<div class="getAmountOffer">
-    <?php 
-        if (isset($customerData['bfl_customer_amount'])) {
-            $amount = $customerData['bfl_customer_amount']; ?>
-    <span class="preapprovedAmt"><?= 'Your pre-approved offer is '?><span><i class="fa fa-rupee"></i> <?= $amount ?></span></span>
-        <?php } ?>
-</div>

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TestCaseEntity>
-   <description>This test case as the name suggests is just used for Login for the Customer.</description>
-   <name>Login</name>
-   <tag></tag>
-   <comment></comment>
-   <testCaseGuid>bc26b3d3-f46a-4fdc-b460-cf4ae0245224</testCaseGuid>
-</TestCaseEntity>

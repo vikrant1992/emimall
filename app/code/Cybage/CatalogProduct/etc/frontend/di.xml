@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Catalog\Block\Product\Compare\ListCompare" type="Cybage\CatalogProduct\Block\Product\Compare\ListCompare" />
-    <preference for="Magento\Catalog\Model\ResourceModel\Product\Compare\Item\Collection" type="Cybage\CatalogProduct\Model\ResourceModel\Product\Compare\Item\Collection" />
-    <type  name="Magento\Catalog\Controller\Product\Compare\Remove">
-        <plugin name="product_remove_after" sortOrder="1"  disabled="false" type="Cybage\CatalogProduct\Plugin\Product\RemoveAroundPlugin"/>
-    </type>
-</config>

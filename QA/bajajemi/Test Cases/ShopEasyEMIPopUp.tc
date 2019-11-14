@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<TestCaseEntity>
-   <description>Here we are Verifying if the pop up of Easy EMIs opens up on Click of Shop Easy emi Button.</description>
-   <name>ShopEasyEMIPopUp</name>
-   <tag></tag>
-   <comment></comment>
-   <testCaseGuid>843c31a3-dc2f-4799-939d-a5c58e5c4bad</testCaseGuid>
-</TestCaseEntity>
