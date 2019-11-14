@@ -1,0 +1,499 @@
+<?php
+$categories = $block->getStoreCategories(true, false, true);
+$cities = $block->getAllCities();
+$popularCities = $this->helper('Cybage\Storelocator\Helper\Category')->getPopulaCities();
+$customerData = $block->getCustomerSessionData();
+$storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();
+if(isset($customerData['bfl_customer_city_name'])) {
+    $city = ucfirst($customerData['bfl_customer_city_name']);
+} else {
+    $city = 'Select City';
+}
+$ipinfo = $block->getIpinfo();
+$apiKey = $block->getApikey();
+$apiUrl = $block->getApiurl();
+$customerData['bfl_customer_city_name'] = $city = $block->getCityCookie();
+$contentCopy = $block->isContentCopyEnabled();
+if($contentCopy) { ?>
+<style>
+        body {
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+        }
+</style>
+<script type='text/javascript'>
+var isCtrl = false;
+document.onkeyup=function(e)
+{
+	if(e.which === 17)
+	isCtrl=false;
+};
+document.onkeydown=function(e)
+{
+	if(e.which === 123)
+	isCtrl=true;
+	if (((e.which === 85) || (e.which === 65) || (e.which === 88) || (e.which === 67) || (e.which === 86) || (e.which === 2) || (e.which === 3) || (e.which === 123) || (e.which === 83)) && isCtrl === true)
+	{
+		alert('This function is disabled');
+		return false;
+	}
+};
+// right click code
+var isNS = (navigator.appName === "Netscape") ? 1 : 0;
+if(navigator.appName === "Netscape") document.captureEvents(Event.MOUSEDOWN||Event.MOUSEUP);
+function mischandler(){
+	alert('This function is disabled');
+	return false;
+}
+function mousehandler(e){
+	var myevent = (isNS) ? e : event;
+	var eventbutton = (isNS) ? myevent.which : myevent.button;
+	if((eventbutton === 2)||(eventbutton === 3)) return false;
+}
+document.oncontextmenu = mischandler;
+document.onmousedown = mousehandler;
+document.onmouseup = mousehandler;
+function killCopy(e){
+	return false;
+}
+function reEnable(){
+	return true;
+}
+document.onselectstart=new Function ("return false");
+if (window.sidebar){
+	document.onmousedown = killCopy;
+	document.onclick = reEnable;
+}
+</script>
+
+<?php 
+}
+?>
+<input type="hidden" value="<?= $ipinfo?>" id="ipinfo-url">
+<input type="hidden" value="<?= $apiKey?>" id="apikey">
+<input type="hidden" value="<?= $apiUrl?>" id="apiurl">
+<header class="a_emi_header">
+    <div class="topfHeader">
+        <div class="a_backHeaderInnerPages"><img src="<?= $this->getViewFileUrl('images/arrow-left.png'); ?>" alt=""></div>
+        <div class="a_Blogo">
+            <a class="logo" href="<?= $block->getUrl('') ?>" title="<?= /* @escapeNotVerified */ $storeName ?>">
+                <img src="<?= /* @escapeNotVerified */ $block->getLogoSrc() ?>"
+                     title="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+                     alt="<?= $block->escapeHtmlAttr($block->getLogoAlt()) ?>"
+                     <?= $block->getLogoWidth() ? 'width="' . $block->getLogoWidth() . '"' : '' ?>
+                     <?= $block->getLogoHeight() ? 'height="' . $block->getLogoHeight() . '"' : '' ?>
+                     />
+            </a>
+        </div>
+        <div class="a_mobSrch">
+            <img src="<?= /* @escapeNotVerified */ $this->getViewFileUrl('images/combined-shape.svg'); ?>" alt="">
+        </div>
+        <div class="getAmount">
+            <?php
+            if (!isset($customerData['bfl_customer_amount'])) {
+                $amount = 'Check pre-approved offer';?>
+                <button><?= /* @escapeNotVerified */ $amount; ?></button>
+            <?php }
+            ?>
+        </div>
+        <div class="a_mobblackback">
+            <div class="a_mainoffersLinka">
+                <div class="a_mobileScrollwhithLo">
+                    <ul>
+                        <li><a href="JavaScript:void(0);" class="categorySelect"><?= /* @escapeNotVerified */ __('Categories')?> <i class="fas fa-chevron-down a_menudown"></i></a>
+                        </li>
+                        <li><a href="JavaScript:void(0);" id="stores"><?= /* @escapeNotVerified */ __('Stores')?></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="a_rightnotiPop" id="customerAmount">
+            <?php
+            if (!isset($customerData['bfl_customer_amount'])) {
+                $amount = 'Check Pre-Approved Offer';?>
+                <button><?= /* @escapeNotVerified */ $amount; ?></button>
+            <?php
+            } else {
+                $amount = $customerData['bfl_customer_amount'];?>
+                <span class="preapprovedAmt"><?= 'Your pre-approved offer is '?><i class="fa fa-rupee"></i> <?= $amount ?></span>
+            <?php
+            }
+            ?>
+        </div>
+        <div class="a_rightnotiPop">
+            <ul>
+                <li>
+                    <a href="JavaScript:void(0);" class="viewCitypart"><img src="<?= $this->getViewFileUrl('images/location_2.svg'); ?>" alt="city"><p><?= ucfirst(strtolower($city));?></p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="a_searchBlack"></div>
+        <div class="a_mall_search">
+            <div class="a_searchinfild">
+                <?php
+                /** @var $block \Magento\Framework\View\Element\Template */
+                /** @var $helper \Magento\Search\Helper\Data */
+                $helper = $this->helper(\Magento\Search\Helper\Data::class);
+                ?>
+                <div class="block block-search">
+                    <div class="block block-title"><strong><?= /* @escapeNotVerified */ __('Search') ?></strong></div>
+                    <div class="block block-content">
+                        <form class="form minisearch" id="search_mini_form" action="<?= /* @escapeNotVerified */ $helper->getResultUrl() ?>" method="get">
+                            <div class="field search">
+                                <label class="label" for="search" data-role="minisearch-label">
+                                    <span><?= /* @escapeNotVerified */ __('Search') ?></span>
+                                </label>
+                                <div class="control">
+                                    <input id="search"
+                                           data-mage-init='{"quickSearch":{
+                                           "formSelector":"#search_mini_form",
+                                           "url":"<?= /* @escapeNotVerified */ $helper->getSuggestUrl() ?>",
+                                           "destinationSelector":"#search_autocomplete"}
+                                           }'
+                                           type="text"
+                                           name="<?= /* @escapeNotVerified */ $helper->getQueryParamName() ?>"
+                                           value="<?= /* @escapeNotVerified */ $helper->getEscapedQueryText() ?>"
+                                           placeholder="<?= /* @escapeNotVerified */ __('Search for products, brands, and more') ?>"
+                                           class="input-text"
+                                           maxlength="<?= /* @escapeNotVerified */ $helper->getMaxQueryLength() ?>"
+                                           role="combobox"
+                                           aria-haspopup="false"
+                                           aria-autocomplete="both"
+                                           autocomplete="off"/>
+                                    <div id="search_autocomplete" class="search-autocomplete"></div>
+                                    <?= $block->getChildHtml() ?>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button type="submit"
+                                        title="<?= $block->escapeHtml(__('Search')) ?>"
+                                        class="action search">
+                                    <span><?= /* @escapeNotVerified */ __('Search') ?></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="catchcatagory">
+            <div class="a_openSelectcat" style="display: none;">
+                <i class="fas fa-caret-up a_topArr"></i>
+                <i class="fas fa-times crossIcon"></i>
+                <div class="container">
+                    <div class="catboxBorder">
+                        <div class="a_deskcatagory">
+                            <ul>
+                                <?php
+                                foreach ($categories as $category) {
+                                    if (!$category->getIsActive()) {
+                                        continue;
+                                    }
+                                    ?>
+                                    <li><a href="<?= $block->getCategoryUrl($category->getId());?>" class="active" id="<?= $category->getId() ?>" data-tab="mobandele"><?= $category->getName() ?></a></li>
+                                    <?php
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                        <div class="a_contantRight">
+                            <h4><?= /* @escapeNotVerified */ __('Select Category')?></h4>
+                            <?php
+                            foreach ($categories as $category) {
+                                if (!$category->getIsActive()) {
+                                    continue;
+                                }
+                                ?>
+                                <div class="a_cetegoryOne showproCat" id="<?= $category->getId() ?>C">
+                                    <div class="mobileDrop">
+                                        <div class="a_stepthirdMob">
+                                            <i class="fas fa-chevron-left"></i>
+                                            <p><?= $category->getName() ?></p>
+                                        </div>
+                                        <?php
+                                        if ($childrenCategories = $block->getChildCategories($category)) {
+                                            foreach ($childrenCategories as $childrenCategory) {
+                                                if (!$childrenCategory->getIsActive()) {
+                                                    continue;
+                                                }
+                                                ?>
+                                                <div class="a_fivepart">
+                                                    <div class="a_septColmn">
+                                                        <div class="a_secondCat">
+                                                            <a href="<?= $block->getCategoryUrl($childrenCategory->getId());?>" class="active"><?= $childrenCategory->getName() ?> <i class="fas fa-chevron-down"></i></a>
+                                                        </div>
+                                                        <div class="a_thirdCat a_thirdCatShow">
+                                                            <div class="a_stepthirdMob">
+                                                                <i class="fas fa-chevron-left"></i>
+                                                                <p><?= $childrenCategory->getName() ?></p>
+                                                            </div>
+                                                            <ul>
+                                                                <?php
+                                                                if ($grandchildrenCategories = $block->getChildCategories($childrenCategory)) {
+                                                                    foreach ($grandchildrenCategories as $grandchildrenCategory) {
+                                                                        if (!$grandchildrenCategory->getIsActive()) {
+                                                                            continue;
+                                                                        }
+                                                                        $categoryUrl = $block->getCategory($grandchildrenCategory->getId());
+                                                                        ?>
+                                                                        <li><a href="<?= !empty($categoryUrl['custom_url']) ? $categoryUrl['custom_url'] : '#'; ?>"><?=$grandchildrenCategory->getName() ?></a></li>
+                                                                        <?php
+                                                                    }
+                                                                }
+                                                                ?>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--city selector-->
+<div class="selectcitypopup">
+    <div class="selectCityBox ">
+        <div class="slctCityToggle">
+            <div class="stick"></div>
+        </div>
+        <div class="storehead">
+            <p>
+                <?= /* @escapeNotVerified */ __('Select your city')?>
+            </p>
+        </div>
+        <div class="searchbarmainBox">
+            <div class="searchbarBox">
+                <img src="<?= $this->getViewFileUrl('images/search.png'); ?>" alt="city"/>
+                <input type="text" placeholder="Search for your city" id="searchcityinput" autocomplete="off">
+                <a class="seachlocationIcon"><img src="<?= $this->getViewFileUrl('images/trace.svg'); ?>" alt="location" id="currentGeoLocation"/> </a>
+            </div>
+        </div>
+        <div class="popularcitys">
+            <h2><?= /* @escapeNotVerified */ __('Popular Cities')?></h2>
+            <ul class="popularcityUl">
+                <?php foreach ($popularCities as $popularCity => $cityinfo) { ?>
+                <li>
+                        <a href = "javascript:void(0)" class = "city" data-city = "<?= $cityinfo['data-city'] ?>">
+                            <img src = "<?= $cityinfo['img']; ?>" alt = "img" />
+                            <p><?= ucfirst($popularCity) ?></p>
+                        </a>
+                </li>
+                <?php } ?>
+            </ul>
+            <h2 class="othercities"><?= /* @escapeNotVerified */ __('Other Cities')?></h2>
+            <div class="allcitybox">
+                <ul class="allcityUl" id="allcityUl">
+                    <?php
+                    foreach ($cities as $city) {
+                        ?>
+                        <li><a href="JavaScript:void(0);" class="city" data-city="<?= $city['city_name'] ?>"><?= ucfirst(strtolower($city['city_name'])) ?> </a></li>
+                    <?php }
+                    ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="mobileBottomTab">
+    <ul>
+        <li>
+            <a href="<?=$block->getBaseUrl() ?>" class="active mob_home"><img src="<?= $this->getViewFileUrl('images/home.svg'); ?>" alt=""/>
+                <p><?= /* @escapeNotVerified */ __('Home')?></p>
+            </a>
+        </li>
+        <li>
+            <a href="JavaScript:void(0);" class="mob_store"><img src="<?= $this->getViewFileUrl('images/store.svg'); ?>" alt=""/>
+                <p><?= /* @escapeNotVerified */ __('Store')?></p>
+            </a>
+        </li>
+        <li>
+            <a href="JavaScript:void(0);" class="category"><img src="<?= $this->getViewFileUrl('images/category.svg'); ?>" alt=""/>
+                <p><?= /* @escapeNotVerified */ __('Categories')?></p>
+            </a>
+        </li>
+    </ul>
+</section>
+
+<div class="mobileCategoryPop">
+    <div class="backHeader">
+        <div class="a_backHeader"><img src="<?= $this->getViewFileUrl('images/arrow-left.png'); ?>" alt=""></div>
+        <a href="JavaScript:void(0);">
+            <div class="a_Blogo"><img src="<?= $this->getViewFileUrl('images/bajajMob.png'); ?>" alt=""></div>
+        </a>
+    </div>
+    <div class="bannerSec">
+        <?php
+        echo $block->getLayout()
+                ->createBlock('Magento\Cms\Block\Block')
+                ->setBlockId('menu-banner')
+                ->toHtml();
+        ?>
+    </div>
+    <ul>
+        <?php
+        foreach ($categories as $category) {
+            if (!$category->getIsActive()) {
+                continue;
+            }
+            $categoryData = $block->getCategory($category->getId());
+            ?>
+            <li>
+                <a class="active" href="JavaScript:void(0);" id="<?= $category->getId() ?>">
+                    <img src="<?= $this->getUrl('pub/media') . '/catalog/category/' . $categoryData['icon']; ?>" class="lefticon" alt="" />
+                    <p><?=$category->getName()?></p>
+                    <img src="<?= $this->getViewFileUrl('images/dwn_arw.png'); ?>" class="rightarw" alt="" />
+                </a>
+            </li>
+            <?php
+        }
+        ?>
+    </ul>
+</div>
+
+<div class="mobileSubCategoryPop">
+    <div class="backHeader">
+        <div class="a_backHeader"><img src="<?= $this->getViewFileUrl('images/arrow-left.png'); ?>" alt="">
+        </div>
+        <a href="JavaScript:void(0);">
+            <div class="a_Blogo"><img src="<?= $this->getViewFileUrl('images/bajajMob.png'); ?>" alt=""></div>
+        </a>
+    </div>
+    <?php
+    foreach ($categories as $category) {
+        if (!$category->getIsActive()) {
+            continue;
+        }
+        ?>
+    <div class="a_cetegoryOne showproCat"  id="<?= $category->getId() ?>M">
+        <h2><?= $category->getName() ?></h2>
+        <ul>
+            <?php
+            if ($childrenCategories = $block->getChildCategories($category)) {
+                foreach ($childrenCategories as $childrenCategory) {
+                    if (!$childrenCategory->getIsActive()) {
+                        continue;
+                    }
+                    ?>
+                    <li>
+                        <a href="<?= $block->getCategoryUrl($childrenCategory->getId());?>">
+                            <p><?= $childrenCategory->getName() ?></p>
+                        </a>
+                    </li>
+                    <?php
+                }
+            }
+            ?>
+        </ul>
+    </div>
+        <?php
+    }
+    ?>
+</div>
+
+<!-- Search popup -->
+<div class="mainSearch">
+<div class="a_searchPart">
+        <div class="a_backHeader"><img src="<?= $this->getViewFileUrl('images/arrow-left.png'); ?>" alt=""></div>
+        <div class="searchPart">
+            <div class="block block-search">
+                    <div class="block block-title"><strong><?= /* @escapeNotVerified */ __('Search') ?></strong></div>
+                    <div class="block block-content">
+                        <form class="form minisearch" id="search_mini_form_smd" action="<?= /* @escapeNotVerified */ $helper->getResultUrl() ?>" method="get">
+                            <div class="field search">
+                                <div class="control">
+                                    <input id="search_smd"
+                                           data-mage-init='{"quickSearch":{
+                                           "formSelector":"#search_mini_form_smd",
+                                           "url":"<?= /* @escapeNotVerified */ $helper->getSuggestUrl() ?>",
+                                           "destinationSelector":"#search_autocomplete"}
+                                           }'
+                                           type="text"
+                                           name="<?= /* @escapeNotVerified */ $helper->getQueryParamName() ?>"
+                                           value="<?= /* @escapeNotVerified */ $helper->getEscapedQueryText() ?>"
+                                           style="position: unset !important;"
+                                           placeholder="<?= /* @escapeNotVerified */ __('Search') ?>"
+                                           class="input-text"
+                                           maxlength="<?= /* @escapeNotVerified */ $helper->getMaxQueryLength() ?>"
+                                           role="combobox"
+                                           aria-haspopup="false"
+                                           aria-autocomplete="both"
+                                           autocomplete="off" autofocus/>
+                                    <div id="search_autocomplete_smd" class="search-autocomplete"></div>
+                                    <?= $block->getChildHtml() ?>
+                                </div>
+                            </div>
+                            <div class="actions">
+                                <button type="submit"
+                                        title="<?= $block->escapeHtml(__('Search')) ?>"
+                                        class="action search">
+                                    <span><?= /* @escapeNotVerified */ __('Search') ?></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            <button class="srchleft"><img src="<?php echo $this->getViewFileUrl('images/search.png'); ?>" alt=""></button>
+            <button class="micImg"><img src="<?php echo $this->getViewFileUrl('images/Voice-icon.png'); ?>" alt="" /></button>
+        </div>
+    </div>
+    <div class="a_seachCont">
+        <ul class="productList">
+            <li><a href="<?=$block->getBaseUrl() ?>mobiles-and-electronics/mobiles">Mobiles</a></li>
+            <li><a href="<?=$block->getBaseUrl() ?>mobiles-and-electronics/laptops">Laptops</a></li>
+            <li><a href="<?=$block->getBaseUrl() ?>mobiles-and-electronics/tablets">Tablets</a></li>
+            <li><a href="<?=$block->getBaseUrl() ?>tvs-and-large-appliances/televisions">Televisions</a></li>
+            <li><a href="<?=$block->getBaseUrl() ?>tvs-and-large-appliances/washing-machines">Washing Machine</a></li>
+            <li><a href="<?=$block->getBaseUrl() ?>tvs-and-large-appliances/refrigerators">Refrigerator</a></li>
+            <li><a href="<?=$block->getBaseUrl() ?>tvs-and-large-appliances/air-conditioners">Air Conditioner</a></li>
+        </ul>
+        
+    </div>
+</div>
+<!-- search popup ends -->
+
+<div class="transparentBG"></div>
+<script type="text/javascript">
+    require(['jquery'], function ($) {
+        $(document).ready(function () {
+<?php
+if (isset($customerData['bfl_customer_city_name']) && !empty($customerData['bfl_customer_city_name'])) {
+    ?>
+                    if ($(window).width() > 600) {
+                        $('.selectcitypopup').hide();
+                        $('.transparentBG').attr("style", "display: none;");
+                        $('body').css("style", "overflow: auto;" );
+                    } else {
+                        $('.selectcitypopup').hide();
+                        $('.transparentBG').attr("style", "display: none;");
+                        $('body').css("style", "overflow: auto;" );
+                    }
+<?php } else { ?>
+                if ($(".selectcitypopup").length > 0) {
+                $(".selectcitypopup").show();
+                $(".transparentBG").show();
+                $("body").css("overflow", "hidden");
+            }
+<?php } ?>
+        });
+    });
+</script>

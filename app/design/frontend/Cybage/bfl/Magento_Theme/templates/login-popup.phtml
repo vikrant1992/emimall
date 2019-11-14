@@ -1,0 +1,100 @@
+<?php 
+    $helper = $this->helper('Cybage\PstpIntegration\Helper\Data');
+    $isLoggedIn = $helper->isLoggedIn();
+    $baseUrl = $block->getBaseUrl();
+?>
+<div class="j_loginPop" id="j_headerLoginPop">
+            <div class="backHeader">
+                <div class="a_backHeader"><img src="<?= $this->getViewFileUrl('images/arrow-left.png'); ?>" alt=""></div>
+                <a href="javascript:void(0);">
+                    <div class="a_Blogo"><img src="<?= $this->getViewFileUrl('images/bajajMob.png'); ?>" alt=""></div>
+                </a>
+            </div>
+            <div class="j_popHundWidth">
+                <a class="j_cloLoginform" href="javascript:void(0);">
+                    <img src="<?= $this->getViewFileUrl('images/cross.svg'); ?>" alt="">
+                </a>
+                <div class="j_portsec">
+                    <div class="j_fullport j_login">
+                        <div class="j_headDiv">
+                            <h1><?= $block->escapeHtml(__('Welcome!')) ?></h1>
+                            <p><?= $block->escapeHtml(__('Log in to Wishlist, Compare, and Find a Store')) ?></p>
+                        </div>
+                        <div class="j_loginform">
+                            <form id="loginForm" method="POST" action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>">
+                                <div class="InputField">
+                                    <input type="text" autocomplete="off" id="mobileNumber" class="mobileVD" name="mobileNumber" maxlength="10">
+                                    <label><?= $block->escapeHtml(__('Mobile Number')) ?></label>
+                                    <div class="errormsg"><?= $block->escapeHtml(__('Please enter a valid mobile number.')) ?></div>
+                                </div>
+                                <div class="InputField">
+                                    <input type="text" autocomplete="off" id="firstName" class="FirstNameVD" name="firstName">
+                                    <label><?= $block->escapeHtml(__('First Name')) ?></label>
+                                    <div class="errormsg"><?= $block->escapeHtml(__('Please enter a valid first name.')) ?></div>
+                                </div>
+                                <div class="InputField">
+                                    <input type="text" autocomplete="off" id="lastName" class="LastNameVD" name="lastName">
+                                    <label><?= $block->escapeHtml(__('Last Name')) ?></label>
+                                    <div class="errormsg"><?= $block->escapeHtml(__('Please enter a valid last name.')) ?></div>
+                                </div>
+                                <div class="InputField" id="captchaField">
+                                    <?php echo $block->getChildHtml('customform.additional.info'); ?>
+                                </div>
+                                <div class="InputField" id="termsConditions">
+                                  <div class="tNccheck">
+                                    <input type="checkbox" id="checkedtNc"/>
+                                    <label for="checkedtNc"><p><?= __('I accept all')?>
+                                            <a href="<?= $baseUrl?>terms-and-conditions" target="_blank"><?= __('Terms and Conditions ') ?></a></p></label>
+                                      <div class="errormsg">
+                                          <p><?= $block->escapeHtml(__('Please check T&C.')) ?></p>
+                                      </div>
+                                  </div>
+                                </div>
+                                <div class="j_btn">
+                                    <input type="hidden" id="hiddenGetOtpUrl" name="hiddenGetOtpUrl" value="<?php echo $block->getFormAction(); ?>" />
+                                    <input type="hidden" id="hiddenGetOfferUrl" name="hiddenGetOfferUrl" value="<?php echo $block->getOfferFormAction(); ?>" />
+                                    <input type="hidden" id="hiddenOtpRequestId" name="hiddenOtpRequestId" value="" />
+                                    <input type="hidden" id="hiddenSkipCaptchaCheck" name="hiddenSkipCaptchaCheck" value="no" />
+                                    <input type="hidden" id="hiddenCaptchaEnabled" name="hiddenCaptchaEnabled" value="<?php echo $helper->isCaptchaEnabled(); ?>" />
+                                    <input type="hidden" id="hiddenCurrPageUrl" name="hiddenCurrPageUrl" value="<?php echo $helper->getCurrentPageUrl(); ?>" />
+                                    <button class="Subbutton disabled">Get OTP</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="j_fullport j_fullport2">
+                        <div class="j_headDivsec">
+                            <h1><?= $block->escapeHtml(__('You\'re almost there!')) ?></h1>
+                            <p class="a_otpNumber"><?= $block->escapeHtml(__('The OTP has been sent to your mobile number +91 ')) ?><span></span> <a href="javascript:void(0);"><?= $block->escapeHtml(__('Change Number'))?></a>
+                            </p>
+                        </div>
+                        <div class="j_loginform">
+                            <form id="otpSub" method="POST" action="<?php /* @escapeNotVerified */ echo $block->getOfferFormAction(); ?>">
+                                <div class="InputField">
+                                    <input type="text" id="otp" class="j_entrOTP otpVD" autocomplete="off" maxlength="6">
+                                    <label><?= $block->escapeHtml(__('Enter OTP')) ?></label>
+                                    <div class="errormsg"><?= $block->escapeHtml(__('Please enter OTP.')) ?></div>
+                                    <div class="otp_validation_error"></div>
+                                </div>
+                                <div class="j_otpTimer">
+                                    <div class="j_counttime"><?= $block->escapeHtml(__('Waiting for code')) ?>
+                                        <p><?= $block->escapeHtml(__('00:60')) ?></p>
+                                    </div>
+                                </div>
+                                <div class="j_resendOtp"><a href="javascript:void(0);"><?= $block->escapeHtml(__('Resend OTP')) ?></a></div>
+                                <div class="j_subOtp">
+                                    <button class="Subbutton disabled"><?= $block->escapeHtml(__('Verify')) ?></button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="jRightPort">
+                    <img src="<?= $this->getViewFileUrl('images/trolly.svg'); ?>" alt="">
+                </div>
+                <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('login-offers-popup')->toHtml();?>
+                <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('login-get-pre-approved-offers-popup')->toHtml();?>
+                <?php echo $block->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('no-pre-approved-offers-popup')->toHtml();?>
+            </div>
+        </div>

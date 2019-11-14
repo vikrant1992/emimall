@@ -1,0 +1,35 @@
+<?php
+/**
+ * BFL PstpIntegration
+ *
+ * @category   PstpIntegration Module
+ * @package    BFL PstpIntegration
+ * @copyright  2019 All rights reserved.
+ * @license    Proprietary
+ * @author     BFL (bajaj finserv limited)
+ */
+
+$captcha = $block->getCaptchaModel();
+?>
+<div class="field captcha required" role="<?= $block->escapeHtmlAttr($block->getFormId()) ?>">
+    <div class="InputField control captcha">
+        <input name="<?= $block->escapeHtmlAttr(\Magento\Captcha\Helper\Data::INPUT_NAME_FIELD_VALUE) ?>[<?= $block->escapeHtmlAttr($block->getFormId()) ?>]" type="text" class="captchaVD input-text required-entry" data-validate="{required:true}" id="captcha_<?= $block->escapeHtmlAttr($block->getFormId()) ?>" autocomplete="off" placeholder=""/>
+        <label><?= $block->escapeHtml(__('Enter Captcha')) ?></label>
+        <div class="nested">
+            <div class="field captcha no-label"
+                 data-captcha="<?= $block->escapeHtmlAttr($block->getFormId()) ?>"
+                 id="captcha-container-<?= $block->escapeHtmlAttr($block->getFormId()) ?>"
+                 data-mage-init='{"captcha":{"url": "<?= $block->escapeUrl($block->getRefreshUrl()) ?>",
+                                            "imageLoader": "<?= $block->escapeUrl($block->getViewFileUrl('images/loader-2.gif')) ?>",
+                                             "type": "<?= $block->escapeHtmlAttr($block->getFormId()) ?>"}}'>
+                <div class="control captcha-image">
+                    <img alt="<?= $block->escapeHtmlAttr(__('Please type the letters and numbers below')) ?>" class="captcha-img" src="<?= $block->escapeUrl($captcha->getImgSrc()) ?>"/>
+                    <button type="button" class="action reload captcha-reload"><a href="#;"><i class="fa fa-refresh"></i>Reset Captcha</a></button>
+                </div>
+            </div>
+        </div>
+        <div class="errormsg" id="captchaError">
+            <p id="otpError">Please enter a captcha.</p>
+        </div>
+    </div>
+</div>

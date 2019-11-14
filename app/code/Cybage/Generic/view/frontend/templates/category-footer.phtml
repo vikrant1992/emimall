@@ -1,0 +1,15 @@
+<?php
+/**
+ * BFL Cybage_Generic
+ *
+ * @category   Cybage_Generic Module
+ * @package    BFL Cybage_Generic
+ * @copyright  2019 All rights reserved.
+ * @license    Proprietary
+ * @author     BFL (bajaj finserv limited)
+ */
+if ($currentCategory = $block->getCurrentCategory()) {
+    if($currentCategory->getData('footer_content')){
+        echo $currentCategory->getData('footer_content');
+    }
+}

@@ -1,0 +1,62 @@
+<?php
+/*  Copyright (c) BFL (bajaj finserv limited), India */
+?>
+<!doctype html>
+<html <?= /* @escapeNotVerified */ $htmlAttributes ?>>
+    <head <?= /* @escapeNotVerified */ $headAttributes ?>>
+        <!------------ Start Google Analytics head script --------------------->
+        <script>  
+            var flag = 0;
+            var TVCsetCookie = function (cname, cvalue, domain, duration) {
+                console.log('inside TVC Set Cookie');
+                var d = new Date();
+                var expires = '',
+                    calc_duration = 0,
+                    set_domain;
+                if (duration) {
+                    if (duration.minutes) {
+                        calc_duration = duration.minutes * 60 * 1000;
+                    } else if (duration.hours) {
+                        calc_duration = duration.hours * 60 * 60 * 1000;
+                    } else if (duration.days) {
+                        calc_duration = duration.days * 24 * 60 * 60 * 1000;
+                    } else if (duration.weeks) {
+                        calc_duration = duration.weeks * 7 * 24 * 60 * 60 * 1000;
+                    } else if (duration.months) {
+                        calc_duration = duration.months * 30 * 24 * 60 * 60 * 1000;
+                    } else if (duration.years) {
+                        calc_duration = duration.years * 365 * 24 * 60 * 60 * 1000;
+                    }
+                    d.setTime(d.getTime() + calc_duration);
+                    expires = "expires=" + d.toUTCString() + ';';
+                } 
+                set_domain = domain ? domain : '.' + document.domain.replace('www.', '');
+                document.cookie = cname + "=" + cvalue + ";" + expires + "domain=" + set_domain + ";path=/";
+            }
+
+            window.addEventListener("message", function (e) {
+                if(flag==0){
+                if (e.origin == 'https://prm.bajajfinserv.in') {
+                    console.log(e.origin);
+                    console.log(e.data);
+                    TVCsetCookie('_ga', e.data, 'www.bajajfinservemimall.in', { years: 2 });
+                    console.log('cookie set');
+                    flag=1;
+                    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','GTM-N9CQJ76');
+                }}
+            }, false);
+        </script>
+        <!------------ End Google Analytics head script --------------------->
+        <?= /* @escapeNotVerified */ $requireJs ?>
+        <?= /* @escapeNotVerified */ $headContent ?>
+        <?= /* @escapeNotVerified */ $headAdditional ?>
+    </head>
+    <body data-container="body" data-mage-init='{"loaderAjax": {}, "loader": { "icon": "<?= /* @escapeNotVerified */ $loaderIcon ?>"}}' <?= /* @escapeNotVerified */ $bodyAttributes ?>>
+        <iframe src="https://prm.bajajfinserv.in" height="1px" width = "1px" style="display:none"></iframe>
+        <?= /* @escapeNotVerified */ $layoutContent ?>
+    </body>
+</html>

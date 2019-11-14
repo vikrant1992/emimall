@@ -1,0 +1,188 @@
+<?php
+/**
+ * Copyright Â© Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * Product media data template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Gallery
+ */
+?>
+<?php
+$specscore = number_format($this->getProduct()->getSpecScore(),0);
+$external_link = $this->getProduct()->getExternalLink();
+$product = $this->getProduct();
+$isEasyEMI = $product->getResource()->getAttribute('is_easy_emi')->getFrontend()->getValue($product);
+$attributeSetId = $block->getProduct()->getAttributeSetId();
+$categoryLob = $this->helper('Cybage\Storelocator\Helper\Category')->getCategoryLob($attributeSetId);
+?>
+<div class="galleryButtonsWrap">
+    <div class="j_proBckCol">
+        <div class="p_productrenk">
+            <?php if($isEasyEMI) { ?>
+            <div class="costEmi">
+                <p><?= __('Easy EMI')?></p>
+            </div>
+            <?php } ?>
+        </div>
+        <?php if($specscore >0) : 
+        $specOverClass='';
+        if ($specscore>50) :
+            $specOverClass="over50";
+        endif;
+        $specScoreClass= 'p'.round($specscore);
+        ?>
+        <div class="TOPspascore">
+            <div class="progress-circle <?= $specOverClass; ?> <?= $specScoreClass; ?>">
+                <p><?= $specscore ?>%</p>
+                <div class="left-half-clipper">
+                    <div class="first50-bar"></div>
+                    <div class="value-bar"></div>
+                </div>
+            </div>
+            <p>Spec Score</p>
+        </div>
+        <?php endIf; ?>
+        <div class="gallery-placeholder _block-content-loading" data-gallery-role="gallery-placeholder">
+            <div data-role="loader" class="loading-mask">
+                <div class="loader">
+                    <img src="<?= /* @escapeNotVerified */ $block->getViewFileUrl('images/loader-1.gif') ?>"
+                         alt="<?= /* @escapeNotVerified */ __('Loading...') ?>">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p_callstoregetpro">
+        <?php if(!empty(trim($external_link))):?>
+        <div class="p_getproductpdp">
+            <a href="<?= $external_link ?>" target="_blank"><?= __('Buy Now'); ?></a>
+        </div>
+        <?php endif;?>
+        <div class="p_callstores">
+            <a href="javascript:void(0);"><?= __('Find a Store'); ?></a>
+        </div>
+    </div>
+</div>
+<!--Fix for jumping content. Loader must be the same size as gallery.-->
+<script>
+    var config = {
+            "width": <?= /* @escapeNotVerified */ $block->getImageAttribute('product_page_image_medium', 'width') ?>,
+            "thumbheight": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_small', 'height')
+                        ?: $block->getImageAttribute('product_page_image_small', 'width'); ?>,
+            "navtype": "<?= /* @escapeNotVerified */ $block->getVar("gallery/navtype") ?>",
+            "height": <?= /* @escapeNotVerified */ $block->getImageAttribute('product_page_image_medium', 'height') ?>
+        },
+        thumbBarHeight = 0,
+        loader = document.querySelectorAll('[data-gallery-role="gallery-placeholder"] [data-role="loader"]')[0];
+
+    if (config.navtype === 'horizontal') {
+        thumbBarHeight = config.thumbheight;
+    }
+
+    loader.style.paddingBottom = ( config.height / config.width * 100) + "%";
+</script>
+<script type="text/x-magento-init">
+    {
+        "[data-gallery-role=gallery-placeholder]": {
+            "mage/gallery/gallery": {
+                "mixins":["magnifier/magnify"],
+                "magnifierOpts": <?= /* @escapeNotVerified */ $block->getMagnifier() ?>,
+                "data": <?= /* @escapeNotVerified */ $block->getGalleryImagesJson() ?>,
+                "options": {
+                    "maxheight":"477",
+                    "thumbmargin":10,
+                    "thumbwidth":69,
+                    "thumbheight":70,
+                    "nav": "<?= /* @escapeNotVerified */ $block->getVar("gallery/nav") ?>",
+                    "loop": <?= /* @escapeNotVerified */ $block->getVar("gallery/loop") ? 'true' : 'false' ?>,
+                    "keyboard": <?= /* @escapeNotVerified */ $block->getVar("gallery/keyboard") ? 'true' : 'false' ?>,
+                    "arrows": <?= /* @escapeNotVerified */ $block->getVar("gallery/arrows") ? 'true' : 'false' ?>,
+                    "allowfullscreen": <?= /* @escapeNotVerified */ $block->getVar("gallery/allowfullscreen") ? 'true' : 'false' ?>,
+                    "showCaption": <?= /* @escapeNotVerified */ $block->getVar("gallery/caption") ? 'true' : 'false' ?>,
+                    "width": "<?= /* @escapeNotVerified */ $block->getImageAttribute('product_page_image_medium', 'width') ?>",
+                    <?php if ($block->getImageAttribute('product_page_image_medium', 'height') || $block->getImageAttribute('product_page_image_medium', 'width')): ?>
+                        "height": <?php /* @escapeNotVerified */ echo $block->getImageAttribute('product_page_image_medium', 'height')
+                        ?: $block->getImageAttribute('product_page_image_medium', 'width'); ?>,
+                    <?php endif; ?>
+                    <?php if ($block->getVar("gallery/transition/duration")): ?>
+                        "transitionduration": <?= /* @escapeNotVerified */ $block->getVar("gallery/transition/duration") ?>,
+                    <?php endif; ?>
+                    "transition": "<?= /* @escapeNotVerified */ $block->getVar("gallery/transition/effect") ?>",
+                    "navarrows": <?= /* @escapeNotVerified */ $block->getVar("gallery/navarrows") ? 'true' : 'false' ?>,
+                    "navtype": "<?= /* @escapeNotVerified */ $block->getVar("gallery/navtype") ?>",
+                    "navdir": "<?= /* @escapeNotVerified */ $block->getVar("gallery/navdir") ?>"
+                },
+                "fullscreen": {
+                    "nav": "<?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/nav") ?>",
+                    "loop": <?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/loop") ? 'true' : 'false' ?>,
+                    "navdir": "<?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/navdir") ?>",
+                    "navarrows": <?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/navarrows") ? 'true' : 'false' ?>,
+                    "navtype": "<?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/navtype") ?>",
+                    "arrows": <?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/arrows") ? 'true' : 'false' ?>,
+                    "showCaption": <?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/caption") ? 'true' : 'false' ?>,
+                    <?php if ($block->getVar("gallery/fullscreen/transition/duration")): ?>
+                        "transitionduration": <?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/transition/duration") ?>,
+                    <?php endif; ?>
+                    "transition": "<?= /* @escapeNotVerified */ $block->getVar("gallery/fullscreen/transition/effect") ?>"
+                },
+                "breakpoints": <?= /* @escapeNotVerified */ $block->getBreakpoints() ?>
+            }
+        }
+    }
+</script>
+<script type="text/javascript">
+    require(['jquery', 'mage/gallery/gallery'], function($, gallery){
+        $('[data-gallery-role=gallery-placeholder]').on('gallery:loaded', function () {
+            $(this).on('fotorama:ready', function(){       
+                function findStore() {
+                var $block_1_width = $(".page-layout-1column .product.media .j_proBckCol .fotorama__stage .fotorama__stage__shaft").width();
+                var $block_2 = $('.page-layout-1column .product.media .p_callstoregetpro');
+                    $block_2.css("width", $block_1_width + "px");
+                };                
+                findStore();
+                $(window).resize(function() {
+                    findStore();
+                });                  
+            });
+          
+        });
+    });
+</script>
+<script>
+    require(["jquery", "mage/url"], function ($, url) {
+        $(document).ready(function () {
+            var categoryLob = '<?php echo isset($categoryLob) ? $categoryLob : 0; ?>';
+            var modelCode = $('#modelcode').val();
+            var modelName = $('#modelname').val();
+            if (categoryLob !== '0') {
+                $('.p_callstoregetpro .p_callstores > a').click(function () {
+                    var storelocatorUrl = url.build('storelocator/index/session');
+                    var linkUrl = url.build('storelocator');
+                    $.ajax({
+                        url: storelocatorUrl,
+                        type: 'POST',
+                        data: {
+                            findStore:true,
+                            categorylob: categoryLob,
+                            modelCode: modelCode,
+                            modelName: modelName
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            if(data.isLoggedIn == true){
+                                window.location.href = linkUrl;
+                            } else {
+                                $(".a_emi_header .topfHeader .a_rightnotiPop > button").trigger("click");
+                                $("#j_headerLoginPop.j_loginPop").addClass("j_showmopopup");
+                            }
+                        },
+                    });
+                });
+            }
+        });
+    });
+</script>

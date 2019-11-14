@@ -1,0 +1,28 @@
+<?php
+/*  Copyright (c) BFL (bajaj finserv limited), India  */
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Catalog\Block\Product\View\Addto\Compare */
+?>
+
+<?php 
+$helper = $this->helper('Cybage\CatalogProduct\Helper\Product\Compare\Data');
+$inCompareList = $helper->isInCollection($block->getProduct());
+$comapreLabel = __("Compare");
+
+
+if ($inCompareList) {
+   $compareDetailUrl = $helper->getCompareDetailUrl();
+   $id= '';
+   $params = '';
+} else {
+    $compareDetailUrl= 'javascript:void(0);';
+    $id= 'pdpcompare';
+    $params = $helper->getAjaxPostDataParams($block->getProduct());
+}
+
+?>
+<li class="p_shareicon" ><a id="<?= $id ?>" href="<?= $compareDetailUrl ?>" data-custompost='<?= $params;/* @escapeNotVerified */  ?>'
+        title="<?= $comapreLabel ?>"><img src="<?= $block->getViewFileUrl('images/pdp/compere.svg');?>" alt="compare">
+    </a>
+</li>

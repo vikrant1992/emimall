@@ -1,0 +1,91 @@
+<?php
+$specscore = $block->getProductSpecScore();
+$keySpecs = $block->getSpecGroup();
+$helper = $this->helper('Cybage\CatalogProduct\Helper\Product\Compare\Data');
+$inCompareList = $helper->isInCollection($block->getProduct());
+$comapreLabel = __("Compare");
+
+
+if ($inCompareList) {
+    $compareDetailUrl = $helper->getCompareDetailUrl();
+    $id = '';
+    $params = '';
+} else {
+    $compareDetailUrl = 'javascript:void(0);';
+    $id = 'pdpcompare';
+    $params = $helper->getAjaxPostDataParams($block->getProduct());
+}
+?>
+
+<div class="p_shareandcompere">
+    <div class="p_btnrows">
+        <div class="p_sharesbtn">
+            <a href="javascript:void(0);" class="shareMob">
+                <img src="<?= /* @noEscape */ $block->getViewFileUrl('images/pdp/share-2.svg'); ?>" alt="share-2"> Share</a>
+        </div>
+        <div class="p_sharesbtn" id="pdpcompare">
+            <a id="<?= $id ?>" href="<?= $compareDetailUrl ?>" data-custompost='<?= $params;/* @escapeNotVerified */ ?>'
+               title="<?= $comapreLabel ?>"><img src="<?= /* @noEscape */ $block->getViewFileUrl('images/pdp/compere.svg'); ?>" alt="compare"> <?= $comapreLabel ?>
+            </a>
+        </div>
+    </div>
+</div>
+
+<?php if (!empty($keySpecs)) { ?>
+    <div class="keuSpacePdp" id="keyspaces2">
+        <div class="p_keyspeces">
+            <?php
+            if ($specscore > 0) :
+                $specOverClass = '';
+                if ($specscore > 50) :
+                    $specOverClass = "over50";
+                endif;
+                $specScoreClass = 'p' . round($specscore);
+                ?>
+                <div class="p_titlekeyspec">
+                    <strong><?= /* @noEscape */ __('Key Specs'); ?></strong>
+
+                    <div class="TOPspascore">
+                        <div class="progress-circle <?= $specOverClass; ?> <?= $specScoreClass; ?>">
+                            <p><?= /* @noEscape */ $specscore; ?>%</p>
+                            <div class="left-half-clipper">
+                                <div class="first50-bar"></div>
+                                <div class="value-bar"></div>
+                            </div>
+                        </div>
+                        <p><?= /* @noEscape */ __('Spec Score') ?></p>
+                    </div>
+                </div>
+                    <?php endIf; ?>
+            <div class="p_prefrencepartsrow">
+    <?php foreach ($keySpecs as $keySpec => $value) { ?>
+                    <div class="p_designprefrence">
+                        <div class="p_prefrencetitle">
+                            <strong><?= /* @noEscape */ $keySpec ?></strong>
+                            <div class="ratedline">
+                                <?php
+                                if ($value <= 4) {
+                                    $class = "colred";
+                                } elseif ($value > 4 && $value <= 6) {
+                                    $class = "colyellow";
+                                } elseif ($value > 6 && $value <= 8) {
+                                    $class = "colgrean1";
+                                } else {
+                                    $class = "colgrean2";
+                                }
+                                for ($i = 1; $i <= 10; $i+=2) {
+                                    if ($i > $value) {
+                                        $class = '';
+                                    }
+                                    ?>
+                                    <div class="<?= /* @noEscape */ $class ?>"></div>
+        <?php } ?>
+                            </div>
+                        </div>
+                    </div>
+    <?php } ?>
+            </div>
+
+        </div>
+    </div>
+<?php } ?>

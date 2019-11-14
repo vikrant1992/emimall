@@ -1,0 +1,140 @@
+Suite/Test/Step Name,Browser,Description,Tag,Start time,End time,Duration,Status
+Sort_Filter_ProductCount_Loadmore_Emi,Chrome 77.0.3865.90,This suite is being created just to check the Flow of Execution of Test Cases rather than each time opening the Browser.,,2019-09-21 14:04:04,2019-09-21 14:07:44,3m - 40.199s,INCOMPLETE
+,,,,,,,
+Test Cases/PLPproductCount,Chrome 77.0.3865.90,"In this Test Case we are verifying if the Product count initially loaded is 30. 
+If the user clicks on Load More Functionality than again more 30 products should only be loaded.
+Her we are even verifying the total product Count.",,2019-09-21 14:04:13,2019-09-21 14:04:21,8.190s,PASSED
+i = 3,Chrome 77.0.3865.90,,,2019-09-21 14:04:13,2019-09-21 14:04:13,0.001s,PASSED
+Resources.selectCity(),Chrome 77.0.3865.90,,,2019-09-21 14:04:13,2019-09-21 14:04:14,0.345s,PASSED
+Thread.sleep(2000),Chrome 77.0.3865.90,,,2019-09-21 14:04:14,2019-09-21 14:04:16,2.005s,PASSED
+Resources.movingToSmartphonesPage(),Chrome 77.0.3865.90,,,2019-09-21 14:04:16,2019-09-21 14:04:18,1.839s,PASSED
+Assert.assertFalse(Resources.checkifComparepopuppresent()),Chrome 77.0.3865.90,,,2019-09-21 14:04:18,2019-09-21 14:04:18,0.168s,PASSED
+incrementCount = 0,Chrome 77.0.3865.90,,,2019-09-21 14:04:18,2019-09-21 14:04:18,0.001s,PASSED
+count = new plp.CountProducts(),Chrome 77.0.3865.90,,,2019-09-21 14:04:18,2019-09-21 14:04:18,0.003s,PASSED
+totalProductCount = Resources.getTotalCount(),Chrome 77.0.3865.90,,,2019-09-21 14:04:18,2019-09-21 14:04:18,0.103s,PASSED
+"total = Resources.verifyLoadCount(i, totalProductCount, count)",Chrome 77.0.3865.90,,,2019-09-21 14:04:18,2019-09-21 14:04:18,0.509s,PASSED
+"Assert.assertEquals(total, totalProductCount)",Chrome 77.0.3865.90,,,2019-09-21 14:04:18,2019-09-21 14:04:18,0.001s,PASSED
+Start tear down : tearDownTestCase,Chrome 77.0.3865.90,,,2019-09-21 14:04:18,2019-09-21 14:04:21,3.002s,PASSED
+,,,,,,,
+Test Cases/SortLowertoHigherCheck,Chrome 77.0.3865.90,"Chceking the two EMI options order.
+i.e Low to High 
+and High to Low.",,2019-09-21 14:04:21,2019-09-21 14:04:26,4.519s,PASSED
+i = 3,Chrome 77.0.3865.90,,,2019-09-21 14:04:22,2019-09-21 14:04:22,0.001s,PASSED
+driver = getWebDriver(),Chrome 77.0.3865.90,,,2019-09-21 14:04:22,2019-09-21 14:04:22,0.001s,PASSED
+"mouseOver(findTestObject(""Object Repository/PLPpage/PLP_Title""))",Chrome 77.0.3865.90,,,2019-09-21 14:04:22,2019-09-21 14:04:22,0.185s,PASSED
+totalProducts = Resources.getTotalCount(),Chrome 77.0.3865.90,,,2019-09-21 14:04:22,2019-09-21 14:04:22,0.062s,PASSED
+emiPrice = new java.util.ArrayList(),Chrome 77.0.3865.90,,,2019-09-21 14:04:22,2019-09-21 14:04:22,0.000s,PASSED
+"emiPrice.addAll(Resources.getallEMIValues(i, totalProducts))",Chrome 77.0.3865.90,,,2019-09-21 14:04:22,2019-09-21 14:04:23,1.098s,PASSED
+println(emiPrice),Chrome 77.0.3865.90,,,2019-09-21 14:04:23,2019-09-21 14:04:23,0.002s,PASSED
+"for ([j = 0, j < emiPrice.size() - 1, (j++)])",Chrome 77.0.3865.90,,,2019-09-21 14:04:23,2019-09-21 14:04:23,0.008s,PASSED
+Start tear down : tearDownTestCase,Chrome 77.0.3865.90,,,2019-09-21 14:04:23,2019-09-21 14:04:26,3.003s,PASSED
+,,,,,,,
+Test Cases/SortHighertoLowerCheck,Chrome 77.0.3865.90,This test case is used to check if the sort is working appropriately..if the filter selected is Highr to Lower,,2019-09-21 14:04:26,2019-09-21 14:04:38,12.382s,PASSED
+i = 3,Chrome 77.0.3865.90,,,2019-09-21 14:04:26,2019-09-21 14:04:26,0.001s,PASSED
+"mouseOver(findTestObject(""Object Repository/PLPpage/PLP_Title""))",Chrome 77.0.3865.90,,,2019-09-21 14:04:26,2019-09-21 14:04:26,0.155s,PASSED
+"waitForElementNotPresent(findTestObject(""Object Repository/PLPpage/EMIHightoLow""), 5)",Chrome 77.0.3865.90,,,2019-09-21 14:04:26,2019-09-21 14:04:32,5.364s,PASSED
+"click(findTestObject(""Object Repository/PLPpage/EMIHightoLow""))",Chrome 77.0.3865.90,,,2019-09-21 14:04:32,2019-09-21 14:04:32,0.130s,PASSED
+Thread.sleep(2000),Chrome 77.0.3865.90,,,2019-09-21 14:04:32,2019-09-21 14:04:34,2.002s,PASSED
+count = new plp.CountProducts(),Chrome 77.0.3865.90,,,2019-09-21 14:04:34,2019-09-21 14:04:34,0.002s,PASSED
+totalProductCount = Resources.getTotalCount(),Chrome 77.0.3865.90,,,2019-09-21 14:04:34,2019-09-21 14:04:34,0.082s,PASSED
+"flag = Resources.verifyLoadCount(i, totalProductCount, count)",Chrome 77.0.3865.90,,,2019-09-21 14:04:34,2019-09-21 14:04:34,0.365s,PASSED
+emi = new java.util.ArrayList(),Chrome 77.0.3865.90,,,2019-09-21 14:04:34,2019-09-21 14:04:34,0.001s,PASSED
+"emi.addAll(Resources.getallEMIValues(i, Resources.getTotalCount()))",Chrome 77.0.3865.90,,,2019-09-21 14:04:34,2019-09-21 14:04:35,1.127s,PASSED
+"for ([j = 0, j < emi.size() - 1, (j++)])",Chrome 77.0.3865.90,,,2019-09-21 14:04:35,2019-09-21 14:04:35,0.008s,PASSED
+Start tear down : tearDownTestCase,Chrome 77.0.3865.90,,,2019-09-21 14:04:35,2019-09-21 14:04:38,3.003s,PASSED
+,,,,,,,
+Test Cases/AddingproductstoCompare,Chrome 77.0.3865.90,Verifying if the nos. of products added to compare are appropriate or not.,,2019-09-21 14:04:38,2019-09-21 14:05:15,36.295s,PASSED
+driver = getWebDriver(),Chrome 77.0.3865.90,,,2019-09-21 14:04:39,2019-09-21 14:04:39,0.000s,PASSED
+productNames = new java.util.ArrayList(),Chrome 77.0.3865.90,,,2019-09-21 14:04:39,2019-09-21 14:04:39,0.000s,PASSED
+"mouseOver(findTestObject(""Object Repository/PLPpage/PLP_Title""))",Chrome 77.0.3865.90,,,2019-09-21 14:04:39,2019-09-21 14:04:39,0.164s,PASSED
+flag = false,Chrome 77.0.3865.90,,,2019-09-21 14:04:39,2019-09-21 14:04:39,0.001s,PASSED
+"for ([i = 1, i <= nosOfProducts * 2, i += 2])",Chrome 77.0.3865.90,,,2019-09-21 14:04:39,2019-09-21 14:04:49,10.104s,PASSED
+namesofProducts = productNames,Chrome 77.0.3865.90,,,2019-09-21 14:04:49,2019-09-21 14:04:49,0.001s,PASSED
+Thread.sleep(3000),Chrome 77.0.3865.90,,,2019-09-21 14:04:49,2019-09-21 14:04:52,3.001s,PASSED
+"count = callTestCase(findTestCase(""Test Cases/VerifyComparePopUpCount""), null)",Chrome 77.0.3865.90,,,2019-09-21 14:04:52,2019-09-21 14:04:52,0.330s,PASSED
+"Assert.assertEquals(Integer.parseInt(count), nosOfProducts)",Chrome 77.0.3865.90,,,2019-09-21 14:04:52,2019-09-21 14:04:52,0.001s,PASSED
+"callTestCase(findTestCase(""Test Cases/AddingExtraProductToCompare""), null)",Chrome 77.0.3865.90,,,2019-09-21 14:04:52,2019-09-21 14:04:55,3.339s,PASSED
+"waitForElementNotPresent(findTestObject(""Object Repository/CompareFunctionality/ComparePopUp""), 5)",Chrome 77.0.3865.90,,,2019-09-21 14:04:55,2019-09-21 14:05:01,5.391s,PASSED
+"click(findTestObject(""Object Repository/CompareFunctionality/ComparePopUp""))",Chrome 77.0.3865.90,,,2019-09-21 14:05:01,2019-09-21 14:05:02,1.384s,PASSED
+com = new pom_files.ComparePage(driver),Chrome 77.0.3865.90,,,2019-09-21 14:05:02,2019-09-21 14:05:02,0.003s,PASSED
+noofElements = com.compareElementsSize(),Chrome 77.0.3865.90,,,2019-09-21 14:05:02,2019-09-21 14:05:02,0.063s,PASSED
+"Assert.assertEquals(noofElements, nosOfProducts)",Chrome 77.0.3865.90,,,2019-09-21 14:05:02,2019-09-21 14:05:02,0.000s,PASSED
+"for ([j = 1, j <= nosOfProducts, (j++)])",Chrome 77.0.3865.90,,,2019-09-21 14:05:02,2019-09-21 14:05:12,9.336s,PASSED
+Start tear down : tearDownTestCase,Chrome 77.0.3865.90,,,2019-09-21 14:05:12,2019-09-21 14:05:15,3.002s,PASSED
+,,,,,,,
+Test Cases/CheckifCommonFeaturesareHidden,Chrome 77.0.3865.90,This test case is used to verify if the Hide Common features button is working appropriately or not..,,2019-09-21 14:05:15,2019-09-21 14:05:18,3.331s,PASSED
+driver = getWebDriver(),Chrome 77.0.3865.90,,,2019-09-21 14:05:15,2019-09-21 14:05:15,0.001s,PASSED
+"click(findTestObject(""Object Repository/CompareFunctionality/HideCommonFeaturesCheckbox""))",Chrome 77.0.3865.90,,,2019-09-21 14:05:15,2019-09-21 14:05:15,0.102s,PASSED
+"style = getAttribute(findTestObject(""Object Repository/CompareFunctionality/CommonRows""), ""style"")",Chrome 77.0.3865.90,,,2019-09-21 14:05:15,2019-09-21 14:05:15,0.087s,PASSED
+println(style),Chrome 77.0.3865.90,,,2019-09-21 14:05:15,2019-09-21 14:05:15,0.000s,PASSED
+flag = true,Chrome 77.0.3865.90,,,2019-09-21 14:05:15,2019-09-21 14:05:15,0.001s,PASSED
+"Assert.assertEquals(flag, !(style.isEmpty()))",Chrome 77.0.3865.90,,,2019-09-21 14:05:15,2019-09-21 14:05:15,0.001s,PASSED
+Start tear down : tearDownTestCase,Chrome 77.0.3865.90,,,2019-09-21 14:05:15,2019-09-21 14:05:18,3.002s,PASSED
+,,,,,,,
+Test Cases/RemoveFeatureofCompareProducts,Chrome 77.0.3865.90,Verifying the Remove feature which is associated with  the Compare Functionality,,2019-09-21 14:05:18,2019-09-21 14:05:32,14.007s,FAILED
+driver = getWebDriver(),Chrome 77.0.3865.90,,,2019-09-21 14:05:18,2019-09-21 14:05:18,0.001s,PASSED
+Thread.sleep(3000),Chrome 77.0.3865.90,,,2019-09-21 14:05:18,2019-09-21 14:05:21,3.000s,PASSED
+"click(findTestObject(""Object Repository/CompareFunctionality/i_Get This Product_fa fa-times""))",Chrome 77.0.3865.90,,,2019-09-21 14:05:21,2019-09-21 14:05:21,0.135s,PASSED
+Thread.sleep(3000),Chrome 77.0.3865.90,,,2019-09-21 14:05:21,2019-09-21 14:05:24,3.001s,PASSED
+"confirmMessage = getText(findTestObject(""Object Repository/CompareFunctionality/CompareWarningpPopup""))",Chrome 77.0.3865.90,,,2019-09-21 14:05:24,2019-09-21 14:05:24,0.073s,PASSED
+"click(findTestObject(""Object Repository/CompareFunctionality/span_OK""))",Chrome 77.0.3865.90,,,2019-09-21 14:05:24,2019-09-21 14:05:26,1.602s,PASSED
+Assert.assertNotNull(confirmMessage),Chrome 77.0.3865.90,,,2019-09-21 14:05:26,2019-09-21 14:05:26,0.000s,PASSED
+(internal.GlobalVariable.nosOfProducts--),Chrome 77.0.3865.90,,,2019-09-21 14:05:26,2019-09-21 14:05:26,0.001s,PASSED
+refresh(),Chrome 77.0.3865.90,,,2019-09-21 14:05:26,2019-09-21 14:05:26,0.099s,PASSED
+count = Resources.nosOfProductsonComparePage(driver),Chrome 77.0.3865.90,,,2019-09-21 14:05:26,2019-09-21 14:05:27,1.001s,PASSED
+"Assert.assertEquals(count, nosOfProducts)",Chrome 77.0.3865.90,,,2019-09-21 14:05:27,2019-09-21 14:05:27,0.000s,PASSED
+Resources.movingToSmartphonesPage(),Chrome 77.0.3865.90,,,2019-09-21 14:05:27,2019-09-21 14:05:29,1.802s,PASSED
+"productCount = callTestCase(findTestCase(""Test Cases/VerifyComparePopUpCount""), null)",Chrome 77.0.3865.90,,,2019-09-21 14:05:29,2019-09-21 14:05:29,0.165s,FAILED
+Start tear down : tearDownTestCase,Chrome 77.0.3865.90,,,2019-09-21 14:05:29,2019-09-21 14:05:32,3.002s,PASSED
+,,,,,,,
+Test Cases/VerifyMainCategoryNames,Chrome 77.0.3865.90,Here we are verifying if the Category  Name present in the header pop-up panel and the one present onthe PLP page itself are equal or not.,,2019-09-21 14:05:32,2019-09-21 14:06:33,1m - 0.572s,PASSED
+"mouseOver(findTestObject(""Object Repository/PLPpage/PLP_Title""))",Chrome 77.0.3865.90,,,2019-09-21 14:05:32,2019-09-21 14:05:32,0.161s,PASSED
+categoryNames = new java.util.ArrayList(),Chrome 77.0.3865.90,,,2019-09-21 14:05:32,2019-09-21 14:05:32,0.001s,PASSED
+driver = getWebDriver(),Chrome 77.0.3865.90,,,2019-09-21 14:05:32,2019-09-21 14:05:32,0.001s,PASSED
+"size = xpath(""//div[@class='a_deskcatagory']/ul/li"")).size()",Chrome 77.0.3865.90,,,2019-09-21 14:05:32,2019-09-21 14:05:32,0.035s,PASSED
+"for ([i = 1, i <= size, (i++)])",Chrome 77.0.3865.90,,,2019-09-21 14:05:32,2019-09-21 14:06:30,57.225s,PASSED
+Start tear down : tearDownTestCase,Chrome 77.0.3865.90,,,2019-09-21 14:06:30,2019-09-21 14:06:33,3.002s,PASSED
+,,,,,,,
+Test Cases/AddingProductsfromComparePage,Chrome 77.0.3865.90,This test case is used to verify if the product is getting added from Compare Page itself or not.,,2019-09-21 14:06:33,2019-09-21 14:06:44,11.564s,FAILED
+productFirstName = String.valueOf(get(1).charAt(0)),Chrome 77.0.3865.90,,,2019-09-21 14:06:33,2019-09-21 14:06:33,0.001s,PASSED
+println(productFirstName),Chrome 77.0.3865.90,,,2019-09-21 14:06:33,2019-09-21 14:06:33,0.000s,PASSED
+"setText(findTestObject(""Object Repository/CompareFunctionality/input_Select another product_selectpro""), productFirstName)",Chrome 77.0.3865.90,,,2019-09-21 14:06:33,2019-09-21 14:06:33,0.120s,PASSED
+"click(findTestObject(""Object Repository/CompareFunctionality/li_LG G4 32 GB Brown (3 GB RAM)""))",Chrome 77.0.3865.90,,,2019-09-21 14:06:33,2019-09-21 14:06:34,0.666s,PASSED
+"click(findTestObject(""Object Repository/CompareFunctionality/a_Add Product""))",Chrome 77.0.3865.90,,,2019-09-21 14:06:34,2019-09-21 14:06:34,0.086s,PASSED
+Resources.incrementnoOfProducts(),Chrome 77.0.3865.90,,,2019-09-21 14:06:34,2019-09-21 14:06:34,0.000s,PASSED
+Thread.sleep(3000),Chrome 77.0.3865.90,,,2019-09-21 14:06:34,2019-09-21 14:06:37,3.001s,PASSED
+Resources.movingToSmartphonesPage(),Chrome 77.0.3865.90,,,2019-09-21 14:06:37,2019-09-21 14:06:38,1.367s,PASSED
+Thread.sleep(3000),Chrome 77.0.3865.90,,,2019-09-21 14:06:38,2019-09-21 14:06:41,3.002s,PASSED
+"text = callTestCase(findTestCase(""Test Cases/VerifyComparePopUpCount""), null)",Chrome 77.0.3865.90,,,2019-09-21 14:06:41,2019-09-21 14:06:41,0.160s,FAILED
+Start tear down : tearDownTestCase,Chrome 77.0.3865.90,,,2019-09-21 14:06:41,2019-09-21 14:06:44,3.003s,PASSED
+,,,,,,,
+Test Cases/RemovingAllTheProductsFromComparePopup,Chrome 77.0.3865.90,After removing the Product from the Compare Page and Moving to the Mobiles and Electronics Section we can again add a Product from the Compare Page and tha verify the Product Count.,,2019-09-21 14:06:44,2019-09-21 14:06:54,9.667s,FAILED
+"mouseOver(findTestObject(""Object Repository/CompareFunctionality/ComparePopUp""))",Chrome 77.0.3865.90,,,2019-09-21 14:06:44,2019-09-21 14:06:44,0.157s,PASSED
+"click(findTestObject(""Object Repository/CompareFunctionality/RemoveAllLinks""))",Chrome 77.0.3865.90,,,2019-09-21 14:06:44,2019-09-21 14:06:45,0.132s,PASSED
+Thread.sleep(3000),Chrome 77.0.3865.90,,,2019-09-21 14:06:45,2019-09-21 14:06:48,3.002s,PASSED
+"click(findTestObject(""Object Repository/CompareFunctionality/span_OK""))",Chrome 77.0.3865.90,,,2019-09-21 14:06:48,2019-09-21 14:06:48,0.119s,PASSED
+Thread.sleep(3000),Chrome 77.0.3865.90,,,2019-09-21 14:06:48,2019-09-21 14:06:51,3.000s,PASSED
+Assert.assertFalse(Resources.checkifComparepopuppresent()),Chrome 77.0.3865.90,,,2019-09-21 14:06:51,2019-09-21 14:06:51,0.131s,PASSED
+Start tear down : tearDownTestCase,Chrome 77.0.3865.90,,,2019-09-21 14:06:51,2019-09-21 14:06:54,3.001s,PASSED
+,,,,,,,
+Test Cases/FullNameSearch,Chrome 77.0.3865.90,This test case is used to verify if the product is getting searched with Full Name and than verifying the Name of the Product on the PDP page.,,2019-09-21 14:06:54,2019-09-21 14:07:00,6.555s,PASSED
+"setText(findTestObject(""Object Repository/Search/SearchinputFiled""), namesofProducts.get(1))",Chrome 77.0.3865.90,,,2019-09-21 14:06:54,2019-09-21 14:06:54,0.355s,PASSED
+Thread.sleep(3000),Chrome 77.0.3865.90,,,2019-09-21 14:06:54,2019-09-21 14:06:57,3.001s,PASSED
+driver = getWebDriver(),Chrome 77.0.3865.90,,,2019-09-21 14:06:57,2019-09-21 14:06:57,0.001s,PASSED
+list = Resources.getListofProducts(),Chrome 77.0.3865.90,,,2019-09-21 14:06:57,2019-09-21 14:06:57,0.039s,PASSED
+if (list > 5),Chrome 77.0.3865.90,,,2019-09-21 14:06:57,2019-09-21 14:06:57,0.000s,PASSED
+Assert.assertNotNull(list),Chrome 77.0.3865.90,,,2019-09-21 14:06:57,2019-09-21 14:06:57,0.015s,PASSED
+Start tear down : tearDownTestCase,Chrome 77.0.3865.90,,,2019-09-21 14:06:57,2019-09-21 14:07:00,3.001s,PASSED
+,,,,,,,
+Test Cases/VerifyNamesOftheProductsSearched,Chrome 77.0.3865.90,,,2019-09-21 14:07:00,2019-09-21 14:07:40,39.223s,PASSED
+driver = getWebDriver(),Chrome 77.0.3865.90,,,2019-09-21 14:07:01,2019-09-21 14:07:01,0.000s,PASSED
+size = Resources.getListofProducts(),Chrome 77.0.3865.90,,,2019-09-21 14:07:01,2019-09-21 14:07:01,0.011s,PASSED
+"for ([i = 1, i <= size, (i++)])",Chrome 77.0.3865.90,,,2019-09-21 14:07:01,2019-09-21 14:07:37,36.081s,PASSED
+Start tear down : tearDownTestCase,Chrome 77.0.3865.90,,,2019-09-21 14:07:37,2019-09-21 14:07:40,3.002s,PASSED
+,,,,,,,
+Test Cases/VerifyingProductCountOnSearchresultPage,Chrome 77.0.3865.90,,,2019-09-21 14:07:40,2019-09-21 14:07:44,4.068s,FAILED
+"setText(findTestObject(""Object Repository/Search/SearchinputFiled""), namesofProducts.get(1))",Chrome 77.0.3865.90,,,2019-09-21 14:07:40,2019-09-21 14:07:40,0.406s,PASSED
+driver = getWebDriver(),Chrome 77.0.3865.90,,,2019-09-21 14:07:40,2019-09-21 14:07:40,0.000s,PASSED
+"s = getText(findTestObject(""Object Repository/Search/ShowAllResults""))",Chrome 77.0.3865.90,,,2019-09-21 14:07:40,2019-09-21 14:07:40,0.059s,PASSED
+"click(findTestObject(""Object Repository/Search/ShowAllResults""))",Chrome 77.0.3865.90,,,2019-09-21 14:07:40,2019-09-21 14:07:41,0.425s,FAILED
+Start tear down : tearDownTestCase,Chrome 77.0.3865.90,,,2019-09-21 14:07:41,2019-09-21 14:07:44,3.002s,PASSED

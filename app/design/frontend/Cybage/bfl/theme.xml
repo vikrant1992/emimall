@@ -1,0 +1,5 @@
+<!--/*  Copyright (c) BFL (bajaj finserv limited), India  */-->
+<theme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/theme.xsd">
+    <title>BFL</title>
+    <parent>Magento/luma</parent>
+</theme>

@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="default">
+        <job instance="Cybage\Attributemapping\Cron\Cron" method="execute" name="cybage_attributemapping_cron">
+            <config_path>cybage/attributemapping/crontime</config_path>
+        </job>
+        <job instance="Cybage\Attributemapping\Cron\Mapping" method="execute" name="cybage_attributemapping_pammingcron">
+            <config_path>cybage/attributemapping/importcrontime</config_path>
+        </job>
+    </group>
+</config>

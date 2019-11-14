@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!-- /** * Copyright (c) BFL (bajaj finserv limited), India * */ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="api_config" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>API Configuration</label>
+            <tab>cybage</tab>
+            <resource>Cybage_Generic::Config</resource>
+            <group id="pstp" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>PSTP API Configuration</label>
+                <field id="ocp_apim_subscription_key" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Ocp-Apim-Subscription-Key</label>
+                </field>
+                <field id="sendotp_api_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Send OTP API URL</label>
+                </field>
+                <field id="otpsource" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>OTP Source</label>
+                </field>
+                <field id="getoffer_api_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Get Offer API URL</label>
+                </field>
+                <field id="getoffer_api_source_id" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Get Offer API Source Id</label>
+                </field>
+                <field id="first_transaction_api_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>First Transaction API URL </label>
+                </field>
+            </group>
+            <group id="accesstoken" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Generate Access Token API Configuration</label>
+                <field id="api_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>API URL</label>
+                </field>
+                <field id="client_id" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Client ID</label>
+                </field>
+                <field id="client_secret" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Client Secret</label>
+                </field>
+                <field id="grant_type" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Grant Type</label>
+                </field>
+                <field id="resource" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Resource</label>
+                </field>
+            </group>
+            <group id="eventhubdata" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Event Hub Data API Configuration</label>
+                <field id="api_url" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>API URL</label>
+                </field>
+                <field id="key_name" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Key Name</label>
+                </field>
+                <field id="key_value" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Key Value</label>
+                </field>
+                <field id="otpsource" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>OTP Source</label>
+                </field>                
+                <field id="form_id" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Form ID</label>
+                </field>
+                <field id="formname_form" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Form Name</label>
+                </field>
+                <field id="pageName_form" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Page Name Form</label>
+                </field>
+            </group>            
+        </section>
+    </system>
+</config>

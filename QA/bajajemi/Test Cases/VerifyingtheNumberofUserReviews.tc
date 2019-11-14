@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Here i am veriying the number of reviews displayed on the PLP page against the Product to the number of reviews that are present on the PDP page.</description>
+   <name>VerifyingtheNumberofUserReviews</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>a6eae2f6-2ccb-4234-a4b1-285e1ae0b009</testCaseGuid>
+</TestCaseEntity>

@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<!--
+ * BFL Cybage_ImportReview
+ *
+ * @category   Cybage_ImportReview
+ * @package    BFL Cybage_ImportReview
+ * @copyright  2019 All rights reserved.
+ * @license    Proprietary
+ * @author     BFL (bajaj finserv limited)
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add 
+            id="Cybage_ImportReview::data_transfer" 
+            module="Cybage_ImportReview" 
+            parent="Cybage::top_level"
+            resource="Cybage_ImportReview::data_transfer" 
+            sortOrder="10" 
+            title="Data Transfer"/>
+        <add 
+            id="Cybage_ImportReview::import_customer_review_product" 
+            module="Cybage_ImportReview" 
+            parent="Cybage_ImportReview::data_transfer" 
+            resource="Cybage_ImportReview::import_customer_review_product" 
+            sortOrder="80" 
+            title="Import Reviews" 
+            action="importReview/import/index"/>
+    </menu>
+</config>

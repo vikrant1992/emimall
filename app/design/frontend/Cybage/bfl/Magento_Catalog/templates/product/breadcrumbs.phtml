@@ -1,0 +1,57 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+/** @var \Magento\Theme\Block\Html\Breadcrumbs $block */
+/** @var \Magento\Catalog\ViewModel\Product\Breadcrumbs $viewModel */
+$viewModel = $block->getData('viewModel');
+?>
+<?php $productUrl = $viewModel->getProductUrl(); ?>
+<div class="shreTrans">
+    <div class="S_midle">
+        <div class="s_whiteBack">
+            <div class="S_closepart">
+                <a href="javascript:void(0);"><img src="<?= $block->getViewFileUrl('images/pdp/close.png');?>" alt="" /></a>
+            </div>
+            <p class="shreTtl"><?= __('Share this product') ?></p>
+            <ul class="shareMidia">
+                <li>
+                    <a target="_blank" href="https://www.facebook.com/sharer.php?u=<?= urlencode($productUrl) ?>">
+                        <p><?= __('Facebook')?></p> <img src="<?= $block->getViewFileUrl('images/pdp/S_fb.svg');?>" alt="facebook" /></a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://twitter.com/intent/tweet?url=<?= urlencode($productUrl) ?>">
+                        <p><?= __('Twitter') ?></p> <img src="<?= $block->getViewFileUrl('images/pdp/s_tw.svg');?>" alt="twitter" /></a>
+                </li>
+                <li>
+                    <a target="_blank" href="http://pinterest.com/pin/create/button/?url=<?= urlencode($productUrl) ?>">
+                        <p><?= __('Pinterest') ?></p> <img src="<?= $block->getViewFileUrl('images/pdp/s_pr.svg');?>" alt="pinterest" /></a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://plus.google.com/share?url=<?= urlencode($productUrl) ?>">
+                        <p><?= __('Gmail')?></p> <img src="<?= $block->getViewFileUrl('images/pdp/s_mail.svg');?>" alt="google_plus" /></a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://api.whatsapp.com/send?text=<?= urlencode($productUrl) ?>">
+                        <p><?= __('Whatsapp')?></p> <img src="<?= $block->getViewFileUrl('images/pdp/s_whatsapp.svg');?>" alt="whatsapp" /></a>
+                </li>
+                <li>
+                    <input type="text" value="<?= $productUrl?>" name="product-url" id="product-url">
+                    <a href="javascript:void(0);" id="copytoclipboard">
+                        <p><?= __('Copy to clipboard'); ?></p> <img src="<?= $block->getViewFileUrl('images/pdp/s_coppy.svg');?>" alt="copy" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="wishlistTips">
+    <p>a</p>
+</div>
+<div class="breadcrumbs"></div>
+<script type="text/x-magento-init">
+        {
+            ".breadcrumbs": <?= $viewModel->getJsonConfigurationHtmlEscaped() ?>
+        }
+</script>

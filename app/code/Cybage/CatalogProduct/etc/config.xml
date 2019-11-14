@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BFL Cybage_CatalogProduct
+ *
+ * @category   Cybage_CatalogProduct
+ * @package    BFL Cybage_CatalogProduct
+ * @copyright  2019 All rights reserved.
+ * @license    Proprietary
+ * @author     BFL (bajaj finserv limited)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <catalog>
+            <frontend>
+                <grid_per_page_values>30,50</grid_per_page_values>
+                <list_per_page_values>30,50</list_per_page_values>
+                <grid_per_page>30</grid_per_page>
+                <list_per_page>30</list_per_page>
+            </frontend>
+        </catalog>
+    </default>
+</config>

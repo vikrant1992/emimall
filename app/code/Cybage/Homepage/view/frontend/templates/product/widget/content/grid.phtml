@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * BFL Cybage_Homepage
+ *
+ * @category   BFL Cybage_Homepage Module
+ * @package    BFL Cybage_Homepage
+ * @copyright  2019 All rights reserved.
+ * @license    Proprietary
+ * @author     BFL (bajaj finserv limited)
+ */
+use Magento\Framework\App\Action\Action;
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\CatalogWidget\Block\Product\ProductsList $block */
+?>
+<?php if ($exist = ($block->getProductCollection() && $block->getProductCollection()->getSize())): ?>
+    <?php
+    $type = 'widget-product-grid';
+    $mode = 'grid';
+    $image = 'new_products_content_widget_grid';
+    $items = $block->getProductCollection()->getItems();
+    $showWishlist = true;
+    $showCompare = true;
+    $showCart = true;
+    $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+    $description = false;
+    $currency = $block->getPriceInstance();
+    ?>
+
+    <div class="p_leftpaddzeroslide leftPadd">
+        <div class="leftPortionBlur "> </div>
+        <div class="rightPortionBlur"></div>
+        <div class="p_slideapple">
+            <div class="iphonerow">
+                <div class="iphonetype p_iphoneside">
+                    <?php $iterator = 1; ?>
+                    <?php foreach ($items as $_item): ?>
+                        <a href="<?= $block->escapeUrl($block->getProductUrl($_item)) ?>" class="p_applebox" id="<?= $block->escapeHtml($_item->getId()) ?>">
+                            <div class="p_iphoneslideimg">
+                                <?= $block->getImage($_item,
+                                        $image)->toHtml() ?>
+                            </div>
+                            <div class="p_iphonetextunder">
+                                <h3><?= $block->escapeHtml($_item->getName()) ?></h3>
+                                <?php 
+                                    $emiStartingAt = $_item->getData('emi_starting_at');
+                                    if($emiStartingAt):?>
+                                    <?php
+                                        $emiFormatted = $currency->format($emiStartingAt, ['display'=>\Zend_Currency::NO_SYMBOL], false);
+                                    ?>
+                                    <strong>
+                                        <i class="fa fa-rupee"></i><?= " ".$emiFormatted;?>/month
+                                    </strong>
+                                <?php endif;?>
+                            </div>
+                        </a>
+                        <?= ($iterator == count($items) + 1) ? '</li>' : '' ?>
+                    <?php endforeach ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

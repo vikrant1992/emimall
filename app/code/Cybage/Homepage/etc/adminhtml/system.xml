@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+ * BFL Cybage_Homepage
+ *
+ * @category   Cybage_Homepage Config
+ * @package    BFL Cybage_Homepage
+ * @copyright  2019 All rights reserved.
+ * @license    Proprietary
+ * @author     BFL (bajaj finserv limited)
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="homepage" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Homepage</label>
+            <tab>cybage</tab>
+            <resource>Cybage_Generic::Config</resource>
+            <group id="quickcompare" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Quick Compare</label>
+                <field id="skus" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Product SKUs, name and compare URL</label>
+                    <comment>Provide pair of SKUs and Name separated by pipe(|) e.g. sku1,name1,sku2,name2|sku3,name3,sku4,name4|..</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

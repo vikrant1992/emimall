@@ -1,0 +1,48 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+/** @var $block Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare */
+?>
+<div class="CompareButton-wrapper">
+    <input type="checkbox" id="<?php echo $block->getProduct()->getId(); ?>" value="Compare" name="chkcompare"/>
+    <label class="compareButton" for="<?php echo $block->getProduct()->getId(); ?>">
+        <img src="<?php echo $this->getViewFileUrl('images/addtocompear_green.png'); ?>" alt="">
+        <?= /* @escapeNotVerified */ __('Compare') ?> 
+    </label>
+</div>
+<a href="#"
+    class="action tocompare"
+    title="<?= $block->escapeHtml(__('Add to Compare')) ?>"
+    aria-label="<?= $block->escapeHtml(__('Add to Compare')) ?>"
+    data-post='<?= /* @escapeNotVerified */ $this->helper('Cybage\CatalogProduct\Helper\Product\Compare\Data')->getAjaxPostDataParams($block->getProduct()) ?>'
+    role="button">
+    <span><?= /* @escapeNotVerified */ __('Add to Compare') ?></span>
+</a>
+ 
+<script type="text/javascript">
+    require(['jquery'], function ($) {
+        if(localStorage.getItem('mage-cache-storage')) {
+            var collection = JSON.parse(localStorage.getItem('mage-cache-storage'))['compare-products'];
+            if(collection) {
+                var collection_count = collection.items.length;
+                for (var i = 0; i < collection_count; i++) {
+                    var compareListProduct = collection.items[i];
+                    var currentProduct = '<?php echo $block->getProduct()->getId(); ?>';
+                    if(compareListProduct.id == currentProduct) {
+                        $("#"+currentProduct).prop('checked', true);
+                        $('.product-items .product-item-detailed-info label[for="' + currentProduct + '"]').html("<img src='<?php echo $block->getViewFileUrl('images/addtocompear_wht.png') ?>' /> Added" );
+                        $('.product-items .product-item-detailed-info label[for="' + currentProduct + '"]').css({'background': '#00b6b6', 'color': '#ffffff'});
+                        var base_url = window.location.origin+"/catalog/product_compare/remove/";
+                        removeUrlRaw = '{"action": "'+base_url+'", "data": {"uenc": "", "product": "'+currentProduct+'"}}';
+                        $("#"+currentProduct).siblings('a.action.tocompare').attr('data-post', removeUrlRaw);
+                    }
+                }
+            }
+        }
+    });
+</script>
+

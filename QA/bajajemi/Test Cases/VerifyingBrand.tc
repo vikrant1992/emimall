@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>This test case is used to check if the brand that has been selected on the Filter options on the PLP page is working appropriately as per the Brand Filter Itself.</description>
+   <name>VerifyingBrand</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>c92c8e53-f937-4d1b-a250-bd1f22f45e09</testCaseGuid>
+</TestCaseEntity>

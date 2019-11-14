@@ -1,0 +1,39 @@
+<?php
+$productData = $block->getData();
+$schemsData =  $productData['data']['schemes'];?>
+<?php if(!empty($schemsData)) { ?>
+
+<ul>
+    <?php
+    $i = 1;
+    
+   foreach ($schemsData as $schems) {
+    ?>
+        <li>
+            <div>
+                 <?php if($i++ == 1){ 
+                    $checked = 'checked';
+                 } else {
+                    $checked = '';
+                 }
+                ?>
+                <input type="radio" id="sort<?= $i?>" name="sort[]" value="filter" <?= $checked ?>>
+                <label for="sort<?= $i++?>">
+                    <i class="leftcon"><i class="fa fa-rupee"></i>
+                <?= $schems["emiStartingAt"]; ?> <?= __('for') ?> <?= $schems["grossTenure"]; ?> months</i>
+                    <?php if ($schems["downpayment"] == 0 ) { ?>
+                        <i class="rightcon"><?= __('Zero down Payment')?></i>
+                    <?php } else { ?>
+                        <i class="rightcon"><?= __('Down Payment')?> <i class="fa fa-rupee"></i> <?= $schems["downpayment"]; ?></i>
+                    <?php }?>
+                </label>
+            </div>
+        </li>
+        <?php } ?>
+    </ul>
+
+<?php } else { ?>
+       <li>
+        <?= __('No EMI Schemes currently available for this product')?>
+        </li>
+<?php } ?>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>This test case is used to verify if the product is getting added from Compare Page itself or not.</description>
+   <name>AddingProductsfromComparePage</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>b0a0323c-b3bb-4d26-9a7f-2f4a4ae464ef</testCaseGuid>
+</TestCaseEntity>

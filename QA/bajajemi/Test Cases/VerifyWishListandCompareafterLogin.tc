@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Checking if the wishlist and Compare list are empty still is there any count  or the class that is differently being applied like the one that is being applied to wishlisted items.</description>
+   <name>VerifyWishListandCompareafterLogin</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>d478a822-2ce7-49c4-86e3-d342fae9154f</testCaseGuid>
+</TestCaseEntity>

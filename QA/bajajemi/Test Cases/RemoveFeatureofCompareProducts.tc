@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Verifying the Remove feature which is associated with  the Compare Functionality</description>
+   <name>RemoveFeatureofCompareProducts</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>2b6dcef5-509b-41e2-b1ef-24e4aef7ae3f</testCaseGuid>
+</TestCaseEntity>

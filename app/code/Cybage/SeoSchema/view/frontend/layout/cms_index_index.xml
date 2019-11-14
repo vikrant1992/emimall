@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- /** * Copyright (c) BFL (bajaj finserv limited), India * */ -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="head.additional">
+            <block class="Cybage\SeoSchema\Block\SearchBoxSchema" name="search_box_schema"
+                   template="search_box_schema.phtml" cacheable="false"/>
+            <block class="Cybage\SeoSchema\Block\OrganizationSchema" name="organization_schema"
+                   template="organization_schema.phtml" cacheable="false"/>
+        </referenceBlock>
+    </body>
+</page>

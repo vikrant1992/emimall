@@ -1,0 +1,48 @@
+<?php
+/*  Copyright (c) BFL (bajaj finserv limited), India  */
+// @codingStandardsIgnoreFile
+
+/**
+ * Product description template
+ *
+ * @var $block \Magento\Catalog\Block\Product\View\Description
+ */
+?>
+<?php
+$faq = $this->helper('Cybage\Attributemapping\Helper\Data')->getAttributes($block->getProduct()->getSku());
+
+if(!empty($faq)) { ?>
+    <div class="p_pdpfaqs" id="faqsPdp">
+        <div class="p_faqstitle">
+            <p><?= /* @escapeNotVerified */ __('FAQs') ?></p>
+        </div>
+        <div class="p_faqsdata">
+                <div class="p_faqsdesign">
+                    <a href="javascript:void(0);" class="active">
+                        <p><?= /* @escapeNotVerified */ $faq['question_1'] ?></p>
+                        <i class="fa fa-minus"></i></a>
+                    <p class="p_detabacks p_disdatablock"><?= /* @escapeNotVerified */ $faq['answer_1'] ?></p>
+                </div>
+                <div class="p_faqsdesign"><a href="javascript:void(0);">
+                        <p><?= /* @escapeNotVerified */ $faq['question_2'] ?></p>
+                        <i class="fa fa-plus"></i></a>
+                    <p class="p_detabacks"><?= /* @escapeNotVerified */ $faq['answer_2'] ?></p>
+                </div>
+                <div class="p_faqsdesign"><a href="javascript:void(0);">
+                        <p><?= /* @escapeNotVerified */ $faq['question_3'] ?></p>
+                        <i class="fa fa-plus"></i></a>
+                    <p class="p_detabacks"><?= /* @escapeNotVerified */ $faq['answer_3'] ?></p>
+                </div>
+                <div class="p_faqsdesign"><a href="javascript:void(0);">
+                        <p><?= /* @escapeNotVerified */ $faq['question_4'] ?></p>
+                        <i class="fa fa-plus"></i></a>
+                    <p class="p_detabacks"><?= /* @escapeNotVerified */ $faq['answer_4'] ?></p>
+                </div>
+                <div class="p_faqsdesign"><a href="javascript:void(0);">
+                        <p><?= /* @escapeNotVerified */ $faq['question_5'] ?></p>
+                        <i class="fa fa-plus"></i></a>
+                    <p class="p_detabacks"><?= /* @escapeNotVerified */ $faq['answer_5'] ?></p>
+                </div>
+            </div>
+        </div>
+<?php } ?>

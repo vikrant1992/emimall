@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="cybage">
+        <job instance="Cybage\ExpertReview\Cron\Get" method="execute" name="cybage_expertreview_get">
+            <schedule>0 0 1 * *</schedule>
+        </job>
+    </group>
+</config>

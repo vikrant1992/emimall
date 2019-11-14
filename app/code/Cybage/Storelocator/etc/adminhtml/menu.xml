@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add 
+            id="Cybage_Storelocator::cybage_storelocator" 
+            module="Cybage_Storelocator" 
+            parent="Cybage::top_level"
+            resource="Cybage_Storelocator::import" 
+            sortOrder="10" 
+            title="Store Locator"/>
+        <add action="cybage_storelocator/dealer/index" id="Cybage_Storelocator::cybage_storelocator_dealer" module="Cybage_Storelocator" parent="Cybage_Storelocator::cybage_storelocator" resource="Cybage_Storelocator::import" sortOrder="9999" title="Dealer Management"/>
+        <add action="cybage_storelocator/import/index" id="Cybage_Storelocator::cybage_storelocator_import" module="Cybage_Storelocator" parent="Cybage_Storelocator::cybage_storelocator" resource="Cybage_Storelocator::import" sortOrder="9999" title="Import"/>
+    </menu>
+</config>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+ * BFL Cybage_CustomEav
+ *
+ * @category   Cybage_CustomEav schema
+ * @package    BFL Cybage_CustomEav
+ * @copyright  2019 All rights reserved.
+ * @license    Proprietary
+ * @author     BFL (bajaj finserv limited)
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+         <add id="Magento_Catalog::catalog_attributes_sets_mapping" title="Attribute Set Mapping" translate="title" module="Magento_Catalog" sortOrder="40" parent="Magento_Backend::stores_attributes" action="customeav/product_set/" resource="Magento_Catalog::sets"/>
+    </menu>
+</config>

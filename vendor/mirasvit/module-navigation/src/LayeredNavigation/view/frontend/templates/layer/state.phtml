@@ -1,0 +1,78 @@
+<?php
+/**
+ * @var $block \Mirasvit\LayeredNavigation\Block\Renderer\State
+ */
+
+use Mirasvit\LayeredNavigation\Model\Config;
+
+$filters       = $block->getActiveFilters();
+$isAjaxEnabled = $block->isAjaxEnabled();
+?>
+<?php if (!empty($filters)): ?>
+    <div class="filter-current" id="<?= Config::AJAX_STATE_WRAPPER_ID ?>"
+         data-mage-init='{"collapsible":{"active": false, "openedState": "active", "collapsible": true}}'>
+        <strong class="block-subtitle filter-current-subtitle"
+                role="heading"
+                data-role="title"
+                aria-level="2"
+                data-count="<?= count($filters) ?>"><?= __('Now Shopping by') ?></strong>
+        <ol class="items">
+            <?php foreach ($filters as $filter): ?>
+                <?php
+                $clearLinkUrl      = $filter->getClearLinkUrl();
+                $currentFilterName = $block->escapeHtml(__($filter->getName())) . " " . $block->stripTags($filter->getLabel());
+                ?>
+                <li class="item <?= Config::AJAX_STATE_WRAPPER_CLASS ?>"
+                    data-container="<?= $filter->getFilter()->getRequestVar() ?>"
+                    data-value="<?= $block->getPreparedValue($filter->getFilter()->getRequestVar(),
+                        $block->escapeHtml($filter->getValueString(), false)); ?>">
+                    <span class="filter-label"><?= $block->escapeHtml(__($filter->getName())) ?></span>
+                    <span class="filter-value"><?= $block->stripTags($filter->getLabel()) ?></span>
+                    <?php if ($clearLinkUrl): ?>
+                        <a class="action previous" href="<?= $filter->getRemoveUrl() ?>"
+                           title="<?= __('Previous') ?>">
+                            <span><?= __('Previous') ?></span>
+                        </a>
+                        <a class="action remove"
+                           title="<?= $block->escapeHtml($filter->getFilter()->getClearLinkText()) ?>"
+                           href="<?= $clearLinkUrl ?>">
+                            <span><?= $block->escapeHtml($filter->getFilter()->getClearLinkText()) ?></span>
+                        </a>
+                    <?php else: ?>
+                        <a class="action remove" href="<?= $filter->getRemoveUrl() ?>"
+                           title="<?= $block->escapeHtml(__('Remove')) . " " . $currentFilterName ?>">
+                            <span><?= __('Remove This Item') ?></span>
+                        </a>
+                    <?php endif; ?>
+                </li>
+                <input class="<?= Config::AJAX_STATE_WRAPPER_INPUT_CLASS ?>"
+                       name="<?= $filter->getFilter()->getRequestVar() ?>"
+                       value="<?= $block->getPreparedValue($filter->getFilter()->getRequestVar(),
+                           $block->escapeHtml($filter->getValueString(), false)); ?>"
+                       type="checkbox"
+                       style="display: none;"
+                    <?php echo 'checked' ?>
+                />
+            <?php endforeach; ?>
+            <?php if ($block->isHorizontalFilter()): ?>
+                <li class="block-actions filter-actions" style="display: inline-block;">
+                    <a href="<?= $block->getClearUrl() ?>" class="action clear filter-clear"><span><?= __('Clear All') ?></span></a>
+                </li>
+            <?php endif; ?>
+        </ol>
+
+        <?php if ($isAjaxEnabled): ?>
+            <script type="text/x-magento-init">
+            {
+                "#<?= Config::AJAX_STATE_WRAPPER_ID ?>": {
+                    "Mirasvit_LayeredNavigation/js/navigation/state": {
+                        "filtersWrapperSelector": ".<?= Config::AJAX_STATE_WRAPPER_CLASS ?>",
+                        "cleanAllUrl": "<?= $block->getClearUrl() ?>"
+                    }
+                }
+            }
+
+            </script>
+        <?php endif ?>
+    </div>
+<?php endif ?>

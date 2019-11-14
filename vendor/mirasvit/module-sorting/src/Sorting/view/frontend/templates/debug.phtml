@@ -1,0 +1,84 @@
+<?php
+/** @var \Mirasvit\Sorting\Block\Debug $block */
+$values         = $block->getValues();
+$globalScore    = $block->getGlobalScore();
+$criterionScore = $block->getCriterionScore();
+?>
+    <div class="mst-sorting__debug">
+        <div class="mst-sorting__debug-score">
+            <span><?= __('Sorting Score') ?></span>
+            <strong><?= $criterionScore ?></strong>
+        </div>
+
+        <div class="mst-sorting__debug-score global">
+            <span><?= __('Global Score') ?></span>
+            <strong><?= $globalScore ?></strong>
+        </div>
+
+        <div class="mst-sorting__debug-ranking">
+            <?php foreach ($values as $name => $value): ?>
+                <?php $width = abs($value / 2); ?>
+                <div style="margin-bottom: 10px;">
+                    <div style="font-size: 13px;line-height: 16px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap; margin-bottom: 2px;">
+                        <?= $name ?>
+                    </div>
+
+                    <div style="height: 5px; background:#d6d6d6; position: relative;width: 100%;">
+                        <?php if ($value > 0): ?>
+                            <div style="background: #87BC24; height: 5px; left: 50%; top:0; position: absolute; width: <?= $width ?>%"></div>
+                        <?php else: ?>
+                            <div style="background: #D91A00; height: 5px; right: 50%; top:0; position: absolute; width: <?= $width ?>%"></div>
+                        <?php endif ?>
+                    </div>
+                </div>
+            <?php endforeach ?>
+        </div>
+    </div>
+<?php if ($block->isApplyStyles()): ?>
+    <style>
+        .mst-sorting__debug {
+            position: relative;
+            cursor: help;
+        }
+
+        .mst-sorting__debug-ranking {
+            display: none;
+            position: absolute;
+            top: 67px;
+            left: 0;
+            background: #fff;
+            border: 1px solid #d6d6d6;
+            z-index: 10000;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 5px 10px;
+        }
+
+        .mst-sorting__debug-score {
+            border: 1px solid #d6d6d6;
+            padding: 5px 10px;
+            margin-bottom: 5px;
+            display: flex;
+            color: #949494;
+            font-size: 1.3rem;
+        }
+
+        .mst-sorting__debug-score strong {
+            margin-left: auto;
+            color: #333;
+        }
+
+        .mst-sorting__debug-score.global strong {
+            color: #999;
+        }
+
+        .mst-sorting__debug:hover .mst-sorting__debug-ranking {
+            display: block;
+        }
+
+        .mst-sorting__debug:hover .mst-sorting__debug-score {
+            border-color: #bbb;
+        }
+
+    </style>
+<?php endif ?>

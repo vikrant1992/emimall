@@ -1,0 +1,27 @@
+<?php
+/*  Copyright (c) BFL (bajaj finserv limited), India  */
+// @codingStandardsIgnoreFile
+$schemsData = $block->getEmiOptionsStores();
+$isLoggedIn = false;
+$attributeSetId = $block->getProduct()->getAttributeSetId();
+$categoryLob = $this->helper('Cybage\Storelocator\Helper\Category')->getCategoryLob($attributeSetId);
+if ($this->helper('Cybage\Storelocator\Helper\Category')->isCustomerLoggedIn()) {
+    $isLoggedIn = true;
+}
+?>
+<input id="modelcode" name="model_code" type="hidden" value="<?= $this->getProduct()->getModelCode(); ?>"/>
+<input id="modelname" name="model_name" type="hidden" value="<?= $this->getProduct()->getModelName(); ?>"/>
+<div class="p_Emifrom">
+    <div class="p_emileftfrom">
+        <p><?= __('EMI from'); ?></p>
+        <strong>
+<?= $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($this->getProduct()->getEmiStartingAt(),true,false);?> </strong>
+        
+        <a href="javascript:void(0);" id="pdp_getEMIOptions"><?= __('More EMI options');?></a>
+    </div>
+    <div class="emiOptns" id="emioptionvalues">
+        <i class="fas fa-caret-up"></i>
+        
+    </div>
+</div>
+</div>

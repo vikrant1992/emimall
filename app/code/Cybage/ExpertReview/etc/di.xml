@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- /** * Copyright (c) BFL (bajaj finserv limited), India * */ -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+   <type name="Magento\Framework\Console\CommandList">
+       <arguments>
+           <argument name="commands" xsi:type="array">
+               <item name="expert-review" xsi:type="object">Cybage\ExpertReview\Console\ExpertReview</item>
+           </argument>
+       </arguments>
+   </type>
+</config>

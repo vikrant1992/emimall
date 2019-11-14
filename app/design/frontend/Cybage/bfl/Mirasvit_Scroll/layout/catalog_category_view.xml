@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Mirasvit\Scroll\Block\Scroll" name="product.list.scroll" template="Mirasvit_Scroll::scroll.phtml" after="-" />
+        </referenceContainer>
+        <move element="catalog.compare.sidebar" destination="content" after="layer.category.products" />
+        <referenceContainer name="sidebar.additional">
+            <referenceBlock name="wishlist_sidebar" remove="true" />
+        </referenceContainer>
+    </body>
+</page>

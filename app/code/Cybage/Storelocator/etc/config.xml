@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright Â© Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <storelocator>
+            <storelocator>
+                <api_url>https://maps.googleapis.com/maps/api/js?key=</api_url>
+                <api_key>AIzaSyDg6EzT2tlMG4O9zkNAJfoja400KNUC-kw</api_key>
+                <ipinfo_api>https://ipinfo.io/geo</ipinfo_api>
+                <geolocation_api_url>https://maps.googleapis.com/maps/api/geocode/json?latlng=</geolocation_api_url>
+            </storelocator>
+        </storelocator>
+    </default>
+</config>

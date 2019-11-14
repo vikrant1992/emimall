@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--
+ * BFL Cybage_ImportReview
+ *
+ * @category   Cybage_ImportReview
+ * @package    BFL Cybage_ImportReview
+ * @copyright  2019 All rights reserved.
+ * @license    Proprietary
+ * @author     BFL (bajaj finserv limited)
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route frontName="importReview" id="cybage_importreview">
+            <module name="Cybage_ImportReview"/>
+        </route>
+    </router>
+</config>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Here we are verifying if the Category  Name present in the header pop-up panel and the one present onthe PLP page itself are equal or not.</description>
+   <name>VerifyMainCategoryNames</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>939f0e95-61d9-439f-82b3-76c8d44792ee</testCaseGuid>
+</TestCaseEntity>

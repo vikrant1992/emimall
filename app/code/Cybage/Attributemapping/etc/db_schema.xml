@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table comment="cybage_attributemapping_attributes Table" engine="innodb" name="cybage_attributemapping_attributes" resource="default">
+		<column comment="Entity Id" identity="true" name="attributes_id" nullable="false" padding="6" unsigned="false" xsi:type="int"/>
+		<constraint referenceId="PRIMARY" xsi:type="primary">
+			<column name="attributes_id"/>
+		</constraint>
+		<column name="model_code" nullable="true" xsi:type="int"/>
+		<column name="model_name" nullable="true" xsi:type="text"/>
+		<column name="sku" nullable="true" xsi:type="text"/>
+		<column name="short_description" nullable="true" xsi:type="text"/>
+		<column name="short_descriptor" nullable="true" xsi:type="text"/>
+		<column name="footer_title" nullable="true" xsi:type="text"/>
+		<column name="footer_content" nullable="true" xsi:type="text"/>
+		<column name="question_1" nullable="true" xsi:type="text"/>
+		<column name="answer_1" nullable="true" xsi:type="text"/>
+		<column name="question_2" nullable="true" xsi:type="text"/>
+		<column name="answer_2" nullable="true" xsi:type="text"/>
+		<column name="question_3" nullable="true" xsi:type="text"/>
+		<column name="answer_3" nullable="true" xsi:type="text"/>
+		<column name="question_4" nullable="true" xsi:type="text"/>
+		<column name="answer_4" nullable="true" xsi:type="text"/>
+		<column name="question_5" nullable="true" xsi:type="text"/>
+		<column name="answer_5" nullable="true" xsi:type="text"/>
+                <column name="status" nullable="true" xsi:type="int" default="0"/>
+                <column name="comments" nullable="true" xsi:type="text"/>
+                <column name="created_at" nullable="true" xsi:type="timestamp"/>
+	</table>
+</schema>

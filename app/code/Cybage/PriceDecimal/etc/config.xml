@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <default>
+        <catalog_price_decimal>
+            <general>
+                <price_precision>2</price_precision>
+                <enable>1</enable>
+                <can_show_decimal>0</can_show_decimal>
+            </general>
+        </catalog_price_decimal>
+    </default>
+    <websites>
+        <admin>
+            <catalog_price_decimal>
+                <general>
+                    <enable>1</enable>
+                    <can_show_decimal>0</can_show_decimal>
+                </general>
+            </catalog_price_decimal>
+        </admin>
+    </websites>
+</config>

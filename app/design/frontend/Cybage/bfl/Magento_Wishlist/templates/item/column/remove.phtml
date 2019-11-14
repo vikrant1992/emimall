@@ -1,0 +1,13 @@
+<?php
+/*  Copyright (c) BFL (bajaj finserv limited), India  */
+// @codingStandardsIgnoreFile
+
+/* @var \Magento\Wishlist\Block\Customer\Wishlist\Item\Column\Remove $block */
+?>
+<?php
+    $itemId = $block->getItem()->getId();
+?>
+<a href="#" data-role="remove" data-post-remove='<?= /* @noEscape */ $this->helper('Cybage\CustomWishlist\Helper\Data')->getRemoveWishlistParams($itemId,0); ?>' title="<?= $block->escapeHtmlAttr(__('Remove Item')) ?>" class="btn-remove action delete">
+    <span><?= $block->escapeHtml(__('Remove item')) ?></span>
+</a>
+

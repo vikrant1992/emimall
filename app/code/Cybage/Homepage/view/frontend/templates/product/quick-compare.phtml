@@ -1,0 +1,64 @@
+<?php 
+    $comparePairs = $block->getSkusToCompare();
+?>
+<section class="p_quickcompar">
+    <div class="p_leftpaddslide">
+        <div class="p_quicktitle">
+            <h2>Quick Compare</h2>
+        </div>
+        <div class="p_boxquckcompaier compaier">
+            <div class="p_boxquckcompaierinner">
+                <?php if (!empty($comparePairs)) :
+                    foreach ($comparePairs as $skus):?>
+                        <div class="p_compaierdesign">
+                            <?php
+                                if(isset($skus[0]) && isset($skus[2])){
+                                    $firstProductSku = $skus[0];
+                                    $secondProductSku = $skus[2];
+                                    $firstProduct = $block->getProductData($skus[0]);
+                                    $firstProductImage = $block->getProductImageUrl($skus[0]);
+                                    $secondProduct = $block->getProductData($skus[2]);
+                                    $secondProductImage = $block->getProductImageUrl($skus[2]);
+                                }
+                                $firstProdName = isset($skus[1])?$skus[1]:"Product 1";
+                                $secondProdName = isset($skus[3])?$skus[3]:"Product 2";
+                            ?>
+                            <div class="p_partcompaier borderright">
+                                <div class="p_productimg" data-toggle="tooltip" title="<?= $firstProduct['name']; ?>">
+                                    <img class="lazy" src="<?php echo $firstProductImage;?>" alt="">
+                                </div>
+                                <div class="p_textcompaier">
+                                    <p><?php echo $firstProduct['name']; ?></p>
+                                    <?php
+                                       $firstProdEmiStartingAt = $firstProduct->getData('emi_starting_at');
+                                        if($firstProdEmiStartingAt):?>
+                                            <h2><i class="fa fa-rupee"></i><?= " ".round($firstProdEmiStartingAt,0); ?>/month</h2>
+                                    <?php endif;?>
+                                </div>
+                            </div>
+                            <div class="p_partcompaier">
+                                <div class="p_productimg" data-toggle="tooltip" title="<?= $secondProduct['name']; ?>">
+                                    <img class="lazy" src="<?php echo $secondProductImage;?>" alt="">
+                                </div>
+                                <div class="p_textcompaier">
+                                    <p><?php echo $secondProduct['name']; ?></p>
+                                    <?php
+                                       $secondProdEmiStartingAt = $secondProduct->getData('emi_starting_at');
+                                        if($secondProdEmiStartingAt):?>
+                                            <h2><i class="fa fa-rupee"></i><?= " ".round($secondProdEmiStartingAt,0); ?>/month</h2>
+                                    <?php endif;?>
+                                </div>
+                            </div>
+                            <div class="p_vstext">
+                                <p>VS</p>
+                            </div>
+                            <div class="p_googlebtn">
+                                <a href="javascript:void(0);" data-sku1="<?php echo $firstProductSku;?>" data-sku2="<?php echo $secondProductSku;?>"><?php echo $firstProdName; ?> vs <?php echo $secondProdName; ?></a>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+</section>

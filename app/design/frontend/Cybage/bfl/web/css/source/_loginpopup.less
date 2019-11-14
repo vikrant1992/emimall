@@ -1,0 +1,643 @@
+body.cms-home.cms-index-index.page-layout-1column.bodyfilterShown{
+    overflow: hidden !important;
+    position: fixed !important;
+}
+#j_headerLoginPop.j_loginPop {
+    background: #fff;
+    position: fixed;
+    top: 45px;
+    z-index: 99999999;
+    left: 0;
+    bottom: auto;
+    right: 0;
+    display: none;
+    transition: all 0.4s;
+    max-width: 700px;
+    margin: 0 auto;
+    a {
+      &:focus, &:hover{
+        text-decoration: none;
+      }      
+    }
+    @media @mobileonly767 {
+        width: 100%;
+        top: 0%;
+        overflow: auto;
+        left: 101%;
+        right: auto;
+        height: 100%;
+        z-index: 99999999;
+        display:block;      
+    }
+    .backHeader {
+        padding: 0px 0px 0px 15px;
+        float: left;
+        width: 100%;
+        background: #ffffff;
+        box-shadow: 0 0 2px #ddd;
+        display: none;
+        @media @mobileonly767 {
+            display: block;
+            position: fixed;
+            z-index: 1;  
+        }        
+        .a_backHeader {
+            float: left;
+            margin-left: -10px;
+            padding: 10px 0px;
+            >img {
+                float: left;
+                width: 41px;
+                height: 36px;
+            }
+        }
+        .a_Blogo {
+            margin: 14px 0px;
+            float: left;
+            margin-right: 20px;
+            >img {
+                float: left;
+                height: 35px;
+                width: 35px;
+            }
+        }
+    }
+    .j_popHundWidth {
+        float: left;
+        width: 100%;
+        position: relative;
+        @media @mobileonly767 {
+            padding-top: 20px;
+            margin-top: 54px;          
+        }        
+        .j_cloLoginform {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            @media @mobileonly767 {
+                display: none;       
+            }              
+            img {
+                width: 18px;
+                height: 18px;
+            }
+        }
+        .j_portsec {
+            float: left;
+            width: 56%;
+            padding: 45px;
+            @media @mobileonly767 {
+                width: 100%;
+                padding: 20px;
+                overflow: auto;              
+            }            
+            .j_fullport {
+                float: left;
+                width: 100%;
+                .j_headDiv {
+                    float: left;
+                    width: 100%;
+                    margin-bottom: 20px;
+                    h1 {
+                        font-size: 30px;
+                        line-height: 30px;
+                        color: #000;
+                        margin-bottom: 6px;
+                        font-family: @Arial-Bold;
+                        @media @mobileonly767 {
+                            font-size: 26px;
+                            margin-bottom: 14px;                          
+                        }                        
+                    }
+                    p {
+                        font-size: 18px;
+                        line-height: 18px;
+                        color: #666;
+                        margin: 0px;
+                        font-family: @Arial-Regular;                        
+                        @media @mobileonly767 {
+                            font-size: 14px;                         
+                        }                          
+                    }
+                }
+                .j_headDivsec {
+                    float: left;
+                    width: 100%;
+                    margin-bottom: 40px;
+                    h1 {
+                        font-size: 30px;
+                        line-height: 30px;
+                        color: #000;
+                        float: left;
+                        width: 100%;
+                        max-width: 80%;
+                        font-family: @Arial-Bold;
+                        margin-bottom: 0;
+                        @media @mobileonly767 {
+                            max-width: 100%;                             
+                        }                          
+                    }
+                    p {
+                        font-size: 16px;
+                        line-height: 26px;
+                        color: #666;
+                        margin: 16px 0 0 0;
+                        width: 100%;
+                        float: left;
+                        font-family: @Arial-Regular;
+                        a {
+                            color: #00b6b6;
+                            font-size: 16px;
+                            line-height: 26px;
+                            font-family: @Arial-medium;
+                            float: left;
+                            width: 100%;
+                            @media @mobileonly767 {
+                                float: none;
+                                width: auto;
+                                padding-left: 5px;                             
+                            }                            
+                        }
+                    }
+                }
+                .j_loginform {
+                    float: left;
+                    width: 100%;
+                    .InputField {
+                        float: left;
+                        width: 100%;
+                        padding: 10px 0 25px 0;
+                        position: relative;
+                        font-family: @Arial-Regular;
+                        @media @mobileonly767 {
+                            padding-bottom: 40px;
+                            padding-top: 8px;             
+                        }
+                        .control.captcha
+                        {
+                          padding-bottom:0;                         
+                        }
+                        .nested {
+                            width: 100%;
+                            display: inline-block;
+                        }
+                        .captcha-image {
+                            @media @mobileonly767 {
+                                margin-top: 0;
+                            }
+                            img {
+                                margin: 0;
+                                padding: 0;
+                                display: inline-block;
+                                @media @mobileonly767 {
+                                    margin-top: 15px;
+                                }
+                            }
+                            button {
+                                background: none;
+                                border: none;
+                                box-shadow: none;
+                                padding: 5px 0;
+                                float: right;
+                            }
+                            i {
+                                font-size: 11px;
+                                margin-right: 5px;
+                            }
+                            a {
+                                color: #00b6b6;
+                                font-family: @Arial-medium;
+                                font-size: 12px;
+                                text-decoration: none;
+                                font-weight: 400;
+                                &:focus{
+                                    box-shadow: none;
+                                }
+                                @media @mobileonly767 {
+                                    font-size: 16px;
+                                    line-height: 12px;
+                                    float: right;
+                                    padding: 25px 0;          
+                                }
+                            }
+                        }
+                        input {
+                            outline: none;
+                            border: none;
+                            border-bottom: solid 1px #ccc;
+                            float: left;
+                            width: 100%;
+                            font-size: 16px;
+                            color: #666;
+                            line-height: 16px;
+                            color: #222222;
+                            letter-spacing: 0.5px;
+                            height: auto;
+                            margin: 0;
+                            padding: 0 0 4px 0;
+                            box-shadow: none;
+                            font-family: @Arial-Regular;
+                            @media @mobileonly767 {
+                                line-height: 19px;
+                                font-size: 19px;
+                                &:focus{
+                                    border-bottom: solid 1px #5863e4;
+                                }
+                            }
+                        }
+                        label {
+                            font-size: 16px;
+                            line-height: 16px;
+                            color: #999;
+                            position: absolute;
+                            left: 0;
+                            top: 10px;
+                            transition: 0.3s;
+                            cursor: text;
+                            margin: 0;
+                            padding: 0;
+                            @media @mobileonly767 {
+                                font-size: 12px;
+                            }
+                        }
+                        .j_captImg {
+                            position: absolute;
+                            right: 0;
+                            top: -2px;
+                            width: 63px;
+                            @media @mobileonly767 {
+                                float: left;
+                                width: 88px;
+                                position: static;
+                                margin-top: 15px;
+                            }
+                            img {
+                                width: 100%;
+                                height: 30px;
+                                @media @mobileonly767 {
+                                    height: 42px;  
+                                }
+                            }
+                        }
+                        .j_resetCaptcha {
+                            float: right;
+                            @media @mobileonly767 {
+                                margin-top: 15px;
+                            }
+                            a {
+                                font-size: 12px;
+                                line-height: 20px;
+                                color: #00b6b6;
+                                font-family: @Arial-medium;
+                                box-shadow: none;
+                                @media @mobileonly767 {
+                                    font-size: 16px;
+                                    line-height: 12px;
+                                    float: right;
+                                    padding: 15px 0;
+                                }
+                                i {
+                                    font-size: 11px;
+                                    margin-right: 5px;
+                                }
+                            }
+                        }
+                        .tNccheck {
+                          float: left;
+                          margin-top: 0;    
+                          input[type=checkbox] {
+                            opacity: 0;
+                            position: absolute;
+                            margin-top: 4px\9;
+                            margin-left: -20px;    
+                          }   
+                          :checked+label::after {
+                            content: "\f00c";
+                            display: inline-block;
+                            font: normal normal normal 14px/1 FontAwesome;
+                            font-size: 12px;
+                            top: 5px;
+                            left: 22px;
+                            text-rendering: auto;
+                            -webkit-font-smoothing: antialiased;
+                            color: #00b6b6;
+                          }                          
+                          label {
+                            display: inline-block;
+                            position: relative;
+                            padding-left: 5px;
+                            min-height: 20px;
+                            margin-bottom: 0;
+                            font-weight: 400;
+                            cursor: pointer;  
+                            &:before {
+                              content: "";
+                              width: 17px;
+                              height: 17px;
+                              border: 2px solid #00b6b6;
+                              border-radius: 0;
+                              background-color: #fff;
+                              -webkit-transition: border .15s ease-in-out,color .15s ease-in-out;
+                              -o-transition: border .15s ease-in-out,color .15s ease-in-out;
+                              transition: border .15s ease-in-out,color .15s ease-in-out;
+                            }
+                            &:after, &:before {
+                              display: inline-block;
+                              position: absolute;
+                              left: 20px;
+                              top: 2px;
+                              margin-left: -20px;
+                            }
+                            p {
+                              color: #2b2b2b;
+                              font-size: 14px;
+                              font-family: @Arial-Regular;
+                              padding-left: 20px;
+                              line-height: 22px;
+                              a {
+                                color:#00b6b6
+                              }
+                            }                            
+                          }                          
+                        }                      
+                        .j_entrOTP {
+                            letter-spacing: 24px;
+                        }
+                        .errormsg, .otp_validation_error {
+                            position: absolute;
+                            left: 0;
+                            bottom: 5px;
+                            font-size: 12px;
+                            color: #ff2929;
+                            display: none;
+                            @media @mobileonly767 {
+                                bottom: 23px;
+                            }
+                        }
+                        .tNccheck .errormsg, #captchaError.errormsg {
+                            margin: 0;
+                            float: left;
+                            width: 100%;
+                            position: relative !important;
+                            top: 0;						
+                        }
+                    }
+                    .InputField.active label, .InputField.activeField label{
+                        top: -6px;
+                        font-size: 12px;
+                        @media @mobileonly767 {
+                            top: -10px;  
+                        }                        
+                    }
+                    .InputField#captchaField{
+                        padding-bottom: 5px;
+                    }
+                    .InputField#termsConditions{
+                        padding-bottom: 10px;
+                    }
+                    .j_btn {
+                        float: left;
+                        width: 100%;
+                        @media @mobileonly767 {
+                            margin-top: 16px;  
+                        }                        
+                        button {
+                            float: left;
+                            width: 100%;
+                            height: 52px;
+                            border: none;
+                            background-color: rgba(88,99,228,1);
+                            line-height: 20px;
+                            color: #fff;
+                            font-size: 16px;
+                            border-radius: 4px;
+                            text-align: center;
+                            font-family: @Arial-medium;
+                            font-weight: 400;
+                            @media @mobileonly767 {
+                                height: 46px;
+                                border-radius: 6px; 
+                            }                             
+                        }
+                        button.disabled {
+                          opacity: 1;
+                          background: rgba(88,99,228,0.2);
+                        }
+                    }
+                    .j_otpTimer {
+                        float: left;
+                        width: 100%;
+                        .j_counttime {
+                            display: flex;
+                            width: 100%;
+                            color: #999999;
+                            font-size: 12px;
+                            line-height: 18px;
+                            font-family: @Arial-Regular;
+                            p {
+                                color: #ff5858;
+                                float: left;
+                                margin: 0 0 0 5px;
+                                font-family: @Arial-medium;
+                            }
+                        }
+                    }
+                    .j_subOtp {
+                        float: left;
+                        width: 100%;
+                        margin-top: 110px;
+                        @media @mobileonly767 {
+                            position: fixed;
+                            left: -101%;
+                            transition: all 0.5s ease; 
+                            bottom: 20px;
+                            padding: 0 20px;                          
+                        }                        
+                        button {
+                            float: left;
+                            width: 100%;
+                            height: 52px;
+                            border: none;
+                            background-color: rgba(88,99,228,1);
+                            line-height: 20px;
+                            color: #fff;
+                            font-size: 16px;
+                            border-radius: 4px;
+                            text-align: center;
+                            font-family: @Arial-medium;
+                            font-weight: 400;
+                            @media @mobileonly767 {
+                                height: 46px;
+                                border-radius: 6px;                            
+                            }                            
+                        }                        
+                        button.disabled {
+                          opacity: 1;
+                          background: rgba(88,99,228,0.2);
+                        }
+                    }
+                    .j_resendOtp {
+                        float: left;
+                        width: 100%;
+                        display: none;
+                        a {
+                            font-size: 12px;
+                            color: #00b6b6;
+                            font-family: @Arial-medium;
+                        }
+                    }
+                }
+            }
+            .j_fullport2 {
+                display: none;
+            }
+        }
+        .jRightPort {
+            float: left;
+            width: 44%;
+            @media @mobileonly767 {
+                display: none;             
+            }            
+            img {
+                padding-top: 98px;
+                width: 100%;
+                float: left;
+            }
+        }
+        .congratesPart{
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: #fff;
+            padding: 40px;
+            padding-top: 90px;
+            float: left;
+            width: 100%;
+            display: none; 
+            @media @mobileonly767 {
+                padding-top: 50px;
+                padding-left: 20px;
+                padding-right: 20px;           
+            }            
+            .cadImg {
+                float: right;
+                width: 55%;
+                @media @mobileonly767 {
+                    width: 100%;
+                    padding: 0px 30px;     
+                }            
+                >img {
+                    float: left;
+                    width: 100%;
+                }
+            }
+            .cadImg.persentImg {
+                text-align: center;
+                img {
+                    float: none;
+                    width: 246px;
+                    height: 205px;
+                    @media @mobileonly767 {
+                        width: 100%;  
+                    }
+                }    
+            }  
+            .a_congcon {
+                float: left;
+                width: 45%;
+                padding-right: 20px;
+                @media @mobileonly767 {
+                    width: 100%;
+                    padding-right: 0;
+                    margin-top: 50px;
+                    padding: 0px 15px;    
+                }                 
+                >h4 {
+                    float: left;
+                    width: 100%;
+                    font-family: @Arial-Bold;
+                    font-size: 24px;
+                    line-height: 28px;
+                    margin-bottom: 20px;
+                    color: #000000;
+                    @media @mobileonly767 {
+                        .mobileText {
+                            font-family: @Arial-Regular;
+                        }
+                    }                     
+                }
+                >p {
+                    float: left;
+                    width: 100%;
+                    font-size: 16px;
+                    line-height: 22px;
+                    color: #666666;
+                    font-family: @Arial-Regular;
+                    @media @mobileonly767 {
+                        font-size: 14px;   
+                    }               
+                }    
+            }
+            .buttoPart {
+                float: left;
+                width: 100%;
+                text-align: center;
+                margin-top: 50px;
+                .btnBlue {
+                    font-size: 16px;
+                    color: #fff;
+                    line-height: 20px;
+                    font-family: @Arial-medium;
+                    border-radius: 4px;
+                    background-color: #5863e4;
+                    display: inline-block;
+                    padding: 16px 53px;
+                    margin-bottom: 20px;
+                    text-decoration: none;
+                    @media @mobileonly767 {
+                        padding: 13px 0px;
+                        float: left;
+                        width: 100%; 
+                    }                 
+                }   
+                .btnLink {
+                    font-size: 16px;
+                    color: #5863e4;
+                    line-height: 20px;
+                    font-family: @Arial-medium;
+                    clear: left;
+                    display: block;
+                    text-decoration: none;
+                }    
+            }  
+        }
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        transition: background-color 5000s ease-in-out 0s;;
+    }    
+}
+@media @mobileonly767 {
+    #j_headerLoginPop.j_showmopopup {
+        left: 0;
+        .j_popHundWidth {
+            .j_portsec { 
+                .j_fullport {
+                    .j_loginform {
+                        .j_subOtp {
+                            left: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }  
+}
+#j_headerLoginPop.j_showmopopup {
+    display: block;
+}
+body>.loading-mask {
+    z-index: 999999999;
+}

@@ -1,0 +1,190 @@
+<?php
+$stores = $block->getSoresCollection();
+$numberofStoresPerPage = $block->getNumberofStoresPerpage();
+if(empty($numberofStoresPerPage)){
+    $numberofStoresPerPage =10;
+}
+$allStores = $block->getAllStores();
+$ajaxParams = $block->getajaxParams();
+$divLength =0;
+if(isset($ajaxParams) && $ajaxParams['divlength']){
+    $divLength = $ajaxParams['divlength'];
+}
+?>
+<?php
+$storesCount = 0;
+if(count($stores)){
+foreach ($stores as $key => $store) {
+    $arrayKey = $key;
+    ?>
+    <div class="p_storedetilsbox" id="dealer<?= $store['bajaj_dealerid'] ?>" data-storeKey="<?php echo $key; ?>">
+        <a class="storeName"href="javascript:void(0);">
+            <div class="p_nameoffer">
+                <div class="p_salesnametitle">
+                    <h2><?= $store['dealer_name'] . ', ' . $store['area']; ?> </h2>
+                </div>
+            </div>
+            <div class="p_storelistdeta">
+                <div class="a_adddisc">
+                    <p><?= $block->getDealerOffer($store['bajaj_dealerid']) ?></p>
+                </div>
+            </div>
+        </a>
+        <div class="p_knowmore">
+            <ul>
+                <li class="p_btnknow">
+                    <a href="javascript:void(0);" class="getdirection listGetDirection" data-lat="<?= $store['latitude'] ?>" data-long="<?= $store['longitude'] ?>">
+                        <img src="<?php echo $this->getViewFileUrl('images/ico-directio.png'); ?>" alt="">
+                        <p><?= __('Get Directions') ?></p>
+                    </a>
+                </li>
+                <li class = "p_phone">
+                    <a href="javascript:void(0);">
+                        <img src = "<?php echo $this->getViewFileUrl('images/ico-call-wht.svg'); ?>" alt = "phone-forwarded">
+                        <p><?= __('Contact Store') ?></p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="a_continuSdop">
+            <div class="a_continuSdopBlack">
+                <div class="a_continuPopCon">
+                    <div class="a_title">
+                        <h4><?= $store['dealer_name'] . ', ' . $store['area']; ?></h4>
+                    </div>
+                    <div class="a_mainCcOn">
+                        <p><?php echo __('A callback request has been sent to the store. A representative will be calling you shortly'); ?></p>
+                        <a href="<?= $block->getBaseUrl() ?>"><?php echo __('Continue Shopping'); ?></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class = "a_storeLList">
+            <div class = "a_storeLBlack">
+                <div class = "a_continuPopCon">
+                    <div class = "a_title">
+                        <h4><?= __('Contact') ?></h4>
+                    </div>
+                    <div class = "a_callAndreq">
+                        <ul>
+                            <li>
+                                <a href = "tel:<?= $store['phone'] ?>" class = "callStore">
+                                    <img src = "<?php echo $this->getViewFileUrl('images/ico-call.svg'); ?>" alt = "">
+                                    <h4><?= __('Call Store') ?></h4>
+                                    <p><?= __('For a better experience, call from your registered number') ?></p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" id="callBack" class="callBack" data-storeid="<?= $store['dealer_id'] ?>">
+                                    <img src = "<?php echo $this->getViewFileUrl('images/ico-call-request.svg'); ?>" alt = "">
+                                    <h4><?= __('Request a Callback') ?></h4>
+                                    <p><?= __('Get a call from this store') ?></p>
+                                </a>
+                            </li>
+       
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p_storeloction">
+            <div class="storehead">
+                <p>
+                    <img src="<?php echo $this->getViewFileUrl('images/closesim.png'); ?>" alt=""><?= __('Store details') ?>
+                </p>
+            </div>
+            <div class="p_loctiontitle">
+                <?php if (empty($store['dealer_logo'])) { ?>
+                    <img src = "<?php echo $this->getUrl('pub/media') . '/dealer/' . $block->getDefaultImage(); ?>" alt = "">
+                    <?php
+                } else {
+                    ?>
+                    <img src = "<?php echo $this->getUrl('pub/media') . '/cybage/dealer' . $store['dealer_logo']; ?>" alt = "">
+                <?php }
+                ?>
+                <h2><img src="<?php echo $this->getViewFileUrl('images/back_black.svg'); ?>" alt=""><?= $store['dealer_name'] . ', ' . $store['area']; ?></h2>
+
+            </div>
+            <div class="p_loctiondetils">
+                <p><?= $store['address']; ?></p>
+            </div>
+
+            <div class="p_storecallderction">
+                <div class="p_storegetdriction">
+                    <a href="javascript:void(0);" class="getdirection" data-lat="<?= $store['latitude'] ?>" data-long="<?= $store['longitude'] ?>">
+                        <img src="<?php echo $this->getViewFileUrl('images/ico-directio.png'); ?>" alt="">
+                        <p><?= __('Get Directions') ?></p>
+                    </a>
+                </div>
+                <div class="p_storecall">
+                    <a href="javascript:void(0);"><img src="<?php echo $this->getViewFileUrl('images/ico-call-wht.svg'); ?>" alt="phone-forwarded"> <p><?= __('Contact Store') ?></p></a>
+                </div>
+            </div>
+            <?php
+            if (!empty($block->getDealerOffer($store['bajaj_dealerid']))) {
+                ?>
+                <div class="p_instoreoffer">
+                    <div class="a_instoreOffr">
+                        <div class="a_offersHead">
+                            <h4><?= __('In-Store Offers') ?></h4>
+                            <p><?= __('Find exclusive offers on products in nearby stores') ?></p>
+                        </div>
+                        <div class="a_FlatSlide">
+                            <div class="demo">
+                                <div class="demo__content">
+                                    <div class="secondCard"></div>
+                                    <div class="lastCard"></div>
+                                    <div class="demo__card-cont">
+                                        <div class="demo__card">
+                                            <div class="demo__card__top">
+                                                <div class="a_FcashBackPad">
+                                                    <div class="a_FcashBack">
+                                                        <div class="flateHed purple">
+                                                            <p></p>
+                                                        </div>
+                                                        <div class="a_cardConflat">
+                                                            <h4><?= $block->getDealerOffer($store['bajaj_dealerid']) ?></h4>
+                                                            <i><?= __('*T&C Apply') ?></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="demo__card__choice m--reject"><i class="fas fa-thumbs-down"></i><p><?= __('Dislike') ?></p></div>
+                                            <div class="demo__card__choice m--like"><i class="fas fa-thumbs-up"></i><p><?= __('Like') ?></p></div>
+                                            <div class="demo__card__drag"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+        <div class="a_likespops">
+            <div class="a_likebLack">
+                <div class="a_innerLinke">
+                    <p><?= __('Want to get a call back from') ?> <?= $store['dealer_name'] ?>?</p>
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0);" class="likeno"><?= __('No') ?></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="likeyes"><?= __('Yes') ?></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+}
+?>
+
+</div>
+<?php if ((count($allStores) - $divLength ) > $numberofStoresPerPage): ?>
+    <div class="show_more buttonPart" data-lastid="<?php echo $arrayKey + 1; ?>" storecount="<?php echo (count($allStores) - $divLength ) ?>" id="id-<?php echo $arrayKey + 1; ?>">
+        <a href="javascript:void(0);" id="stores-view-more"><?= __('Explore other stores') ?></a>
+    </div>
+<?php endif; ?>   

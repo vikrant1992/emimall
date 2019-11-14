@@ -1,0 +1,56 @@
+<?php
+/*  Copyright (c) BFL (bajaj finserv limited), India  */
+// @codingStandardsIgnoreFile
+
+?>
+<?php
+
+/**
+*  General template for displaying group of blocks devided into sections
+*/
+
+$group = $block->getGroupName();
+$groupCss = $block->getGroupCss();
+$groupBehavior = $block->getGroupBehaviour() ? $block->getGroupBehaviour() : '{"tabs":{"openedState":"active"}}';
+$helper = $this->helper('Cybage\PstpIntegration\Helper\Data'); 
+$isLoggedIn = $helper->isLoggedIn();
+?>
+<div class="sections <?= /* @escapeNotVerified */ $groupCss ?>">
+    <div class="a_mobblackback">
+        <div class="a_mainoffersLinka">
+            <?php 
+            if ($helper->isLoggedIn()) { ?>
+                <div class="a_ahterlogin">
+<!--                    <img src="<?php //echo $this->getViewFileUrl('images/user.svg'); ?>" alt="">-->
+                    <p><?= /* @escapeNotVerified */ __('Hi ') ?> <?php echo $helper->getBflCustomerFirstName(); ?>,</p>
+                    <i><?= /* @escapeNotVerified */ __('Your Pre-approved Amount ') ?> <a href="javascript:void(0);">Rs. <?php echo $helper->getBflCustomerAmount(); ?></a></a> </i>
+                </div>
+            <?php } else { ?>
+                <div class="a_bajajmobHead">
+                    <a href="javascript:void(0);">
+<!--                        <img src="<?php // echo $this->getViewFileUrl('images/user.svg'); ?>" alt="">-->
+                        <p class="a_iserName"><?= /* @escapeNotVerified */ __('Hello, Guest') ?></p>
+                        <i><?= /* @escapeNotVerified */ __('Login to Bajaj Finserv EMI Mall') ?></i>
+                    </a>
+                </div>
+            <?php } ?>
+            
+        </div>
+    </div>
+    <div class="section-item-content nav-sections-item-content" id="store.menu" data-role="content" role="tabpanel" aria-hidden="false">	
+        <?php //echo $this->getLayout()->createBlock("Cybage\NavigationMenu\Block\Html\Topmenu")->setTemplate("Magento_Theme::html/topmenu.phtml")->toHtml();?>
+        
+    </div>
+</div>
+<script>
+    require(['jquery'],function($) {
+        $(document).ready(function(){
+            var wishListOption = '<li class="mobshow category-item level-top parent ui-menu-item" role="presentation"><a href="<?php echo $this->getUrl('wishlist')?>" id="wishlist" class="ui-corner-all" tabindex="-1" role="menuitem">Wishlist</a></li>';
+            var logoutOption = '<li class="mobshow category-item level-top parent ui-menu-item" role="presentation"><a href="<?php echo $this->getUrl('customer/account/logout')?>" id="logout" class="ui-corner-all" tabindex="-1" role="menuitem">Logout</a></li>';
+            var isLoggedIn = '<?php echo isset($isLoggedIn) ? $isLoggedIn : 0 ?>';
+            if(typeof isLoggedIn !== 'undefined' && isLoggedIn !== "" && isLoggedIn !== '0'){
+                $('.sections .section-item-content nav ul').append(wishListOption, logoutOption);
+            }
+        });
+    });
+</script>

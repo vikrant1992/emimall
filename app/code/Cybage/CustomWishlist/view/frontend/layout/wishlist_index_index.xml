@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BFL Cybage_CustomWishlist
+ *
+ * @category   Cybage_CustomWishlist
+ * @package    BFL Cybage_CustomWishlist
+ * @copyright  2019 All rights reserved.
+ * @license    Proprietary
+ * @author     BFL (bajaj finserv limited)
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="wishlist.getproduct" template="Cybage_CustomWishlist::wishlist.phtml" after="-"/>
+            <referenceBlock name="customer.wishlist.items">
+                <block class="Cybage\CustomWishlist\Block\Customer\Wishlist\Item\Column\CustomInfo" name="customer.wishlist.item.emirange" template="Cybage_CustomWishlist::item/column/emirange.phtml" cacheable="false" after="customer.wishlist.item.name"/>
+                <block class="Cybage\CustomWishlist\Block\Customer\Wishlist\Item\Column\CustomInfo" name="customer.wishlist.item.sold.qty" template="Cybage_CustomWishlist::sold-qty.phtml" before="customer.wishlist.item.image"/>
+                <referenceBlock name="customer.wishlist.item.comment" remove="true"/>
+                <referenceBlock name="customer.wishlist.item.cart" remove="true"/>
+                <referenceBlock name="customer.wishlist.item.edit" remove="true"/>
+                <referenceBlock name="product.price.render.wishlist" remove="true"/>
+            </referenceBlock>
+        </referenceContainer>
+        <referenceContainer name="customer.wishlist.buttons" remove="true"/>
+    </body>
+</page>

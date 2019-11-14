@@ -1,0 +1,52 @@
+<section class="p_homesearch mobileSearch">
+    <div class="container">
+        <div class="p_serchdata">
+            <div class="p_serchinput">
+                <div class="a_searchinfild">
+                    <?php
+                    /** @var $block \Magento\Framework\View\Element\Template */
+                    /** @var $helper \Magento\Search\Helper\Data */
+                    $helper = $this->helper(\Magento\Search\Helper\Data::class);
+                    ?>
+                    <div class="block block-search">
+                        <div class="block block-title"><strong><?= /* @escapeNotVerified */ __('Search') ?></strong></div>
+                        <div class="block block-content">
+                            <form class="form minisearch" method="get">
+                                <div class="field search">
+                                    <label class="label" for="search" data-role="minisearch-label">
+                                        <span><?= /* @escapeNotVerified */ __('Search') ?></span>
+                                    </label>
+                                    <div class="control">
+                                        <input id="homesearch"
+                                               type="text"
+                                               placeholder="<?= /* @escapeNotVerified */ __('Search for products, brands, and more') ?>"
+                                               class="input-text"
+                                               maxlength="<?= /* @escapeNotVerified */ $helper->getMaxQueryLength() ?>"
+                                               role="combobox"
+                                               aria-haspopup="false"
+                                               aria-autocomplete="both"
+                                               autocomplete="off" readonly="readonly"/>
+                                        <div id="search_autocomplete" class="search-autocomplete"></div>
+                                        <?= $block->getChildHtml() ?>
+                                    </div>
+                                </div>
+                                <div class="actions">
+                                    <button type="submit"
+                                            title="<?= $block->escapeHtml(__('Search')) ?>"
+                                            class="action search">
+                                        <span><?= /* @escapeNotVerified */ __('Search') ?></span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--<button class="backArr"><img src="images/back.svg" alt=""> </button>-->
+                </div>
+                <a href="javascript:void(0);" class="shopEMI"><img src="<?php echo $this->getViewFileUrl('images/menu_shap.svg'); ?>" alt=""></a>
+            </div>
+            <div class="p_lookingby">
+                <p>Looking to buy something on a budget? <a href="#;">Shop on Easy EMIs <img src="<?php echo $this->getViewFileUrl('images/iconfinder_arrow.svg'); ?>" alt=""></a></p>
+            </div>
+        </div>
+    </div>
+</section>

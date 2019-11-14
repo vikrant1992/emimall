@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>This test case is used to check if the sort is working appropriately..if the filter selected is Highr to Lower</description>
+   <name>SortHighertoLowerCheck</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>6b46763b-9547-4f33-92a1-b0e0c21d5f62</testCaseGuid>
+</TestCaseEntity>

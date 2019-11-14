@@ -1,0 +1,83 @@
+<script>
+require(['jquery', 'slick'], function ($) {
+    $(document).ready(function () {
+        if ($(window).width() > 767) {
+            $('.a_slidingPart').slick({
+                dots: false,
+                infinite: false,
+                speed: 300,
+                arrows: true,
+                slidesToShow: 5,
+                slidesToScroll: 5,
+                responsive: [
+                    {
+                        breakpoint: 1024,
+                        settings: {
+                            slidesToShow: 3.3,
+                            slidesToScroll: 1,
+                            infinite: false,
+                            dots: true
+                        }
+                    },
+                    {
+                        breakpoint: 600,
+                        settings: {
+                            slidesToShow: 2.1,
+                            slidesToScroll: 2
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 2.1,
+                            slidesToScroll: 2
+                        }
+                    }
+                ]
+            });
+
+        }
+
+        $('.a_banerSlider').slick({
+            dots: true,
+            infinite: false,
+            speed: 300,
+            arrows: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        infinite: false,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+
+        $('.a_faqMainSec .a_faqPart .a_faqPers .a_divAccor > h4').click(function () {
+            $(this).siblings('p').slideToggle(200);
+            $(this).toggleClass('active');
+            $(this).parent().siblings().children('p').slideUp(200);
+            $(this).parent().siblings().children('h4').removeClass('active');
+        });
+    });
+});
+</script>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description>Here we are pulling data from Excel to write a Particular review about a Product..</description>
+   <name>WritingReviewFromExcelData</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>8506e9ab-b341-41cd-9b48-9dc1a9f06811</testCaseGuid>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>cd245f35-ee2b-4f9a-9e9d-bf683786256b</id>
+      <masked>false</masked>
+      <name>Review</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>3a9b9fdd-fd76-4534-ad8a-0f4e0b287bbf</id>
+      <masked>false</masked>
+      <name>Title</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>fbea78e8-69b2-4dd3-b50f-946c7efedb7f</id>
+      <masked>false</masked>
+      <name>Description</name>
+   </variable>
+</TestCaseEntity>

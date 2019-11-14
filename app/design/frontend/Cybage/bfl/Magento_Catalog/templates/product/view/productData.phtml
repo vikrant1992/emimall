@@ -1,0 +1,41 @@
+<?php
+/*  Copyright (c) BFL (bajaj finserv limited), India  */
+?>
+<?php
+
+$_ratingSummary = $this->helper('Cybage\Productdetail\Helper\Data')->getRatingSummary($block->getProduct());
+$overallRating = $_ratingSummary['rating_percent'];
+$overallRating = (5 * $_ratingSummary['rating_percent']) /100;
+?>
+<div class="p_pdptitles">
+    <div class="p_pdptitlstext">
+        <h1><?= /* @noEscape */ $block->getProduct()->getName(); ?></h1>
+        <?php if ($_ratingSummary['reviews_count'] > 0) { ?>
+        <div class="p_reviewpoint">
+            <ul class="j_AllRatio">
+                    <?php for ($i=1; $i<=5; $i++) {
+                        $anchorclass = '';
+                        if ($i <= $overallRating) {
+                            $starclass = 'fas fa-star';
+                        } elseif ($i> $overallRating && ($i-1 <$overallRating)) {
+                            $starclass = "fas fa-star-half-o";
+                        } else {
+                            $anchorclass = 'j-grey';
+                            $starclass = 'fas fa-star';
+                        }
+                        
+                        ?>
+                    <li><a href="javascript:void(0);" class="<?= /* @noEscape */ $anchorclass ?>">
+                            <i class="<?= /* @noEscape */ $starclass?>"></i>
+                        </a>
+                    </li>
+                    
+                    <?php } ?>
+                    <li><a class="p_twomorereview" href="javascript:void(0);">
+                        <?= /* @noEscape */ $_ratingSummary['reviews_count']?> <?= /* @noEscape */ $_ratingSummary['reviews_type']?></a>
+                    </li>
+                </ul>
+        </div>
+        <?php } ?>
+        
+    </div>

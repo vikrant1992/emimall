@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Catalog\Model\ResourceModel\Eav\Attribute">
+        <plugin name="mst_ln_catalog_model_resourceModel_eav_attribute_save"
+                type="Mirasvit\LayeredNavigation\Plugin\Catalog\Model\ResourceModel\Eav\Attribute\SavePlugin"
+                sortOrder="1000"/>
+    </type>
+</config>

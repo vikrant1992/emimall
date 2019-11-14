@@ -1,0 +1,144 @@
+<?php
+/*  Copyright (c) BFL (bajaj finserv limited), India  */
+// @codingStandardsIgnoreFile
+
+/**
+ * Product review template
+ *
+ * @var $block Cybage\ImportReview\Block\Reviews
+ */
+?>
+<?php
+$stars = $block->getUserRatings();
+$reviews = $block->getAllreviews();
+$totalReviews = $stars[1]['value'] + $stars[2]['value'] + $stars[3]['value'] + $stars[4]['value'] + $stars[5]['value'];
+$overallRatingValue = $block->getRatingSummary();
+$overallRating = number_format((($overallRatingValue * 5) / 100),1);
+if($totalReviews > 0) {
+?>
+ <div class="j_usrRating">
+        <div class="j_widHudRat">
+            <strong>User Reviews</strong>
+            <div class="j_overRat">
+                <strong><?= $overallRating ?></strong>
+                <ul class="j_AllRatio">
+                    <?php for($i=1; $i<=5; $i++) {
+                        $anchorclass = '';
+                        if($i <= $overallRating) {
+                            $starclass = 'fas fa-star';
+                        } else if($i> $overallRating && ($i-1 <$overallRating)) {
+                            $starclass = "fas fa-star-half-o";
+                        } else {
+                            $anchorclass = 'j-grey';
+                            $starclass = 'fas fa-star';
+                        }
+                        
+                        ?>
+                    <li><a href="javascript:void(0);" class="<?= $anchorclass ?>">
+                            <i class="<?= $starclass?>"></i>
+                        </a>
+                    </li>
+                    
+                    <?php } ?>
+                </ul>
+                <div class="j_ratCount"><?= $totalReviews; ?> Ratings</div>
+            </div>
+
+            <div class="j_ratingBarSec">
+                <ul>
+                    <?php for($i = 5; $i > 0; $i--) {
+                        if ($totalReviews > 0) {
+                            $percent = ($stars[$i]['value'] / $totalReviews) * 100;
+                        } else {
+                            $percent = 0;
+                        }
+                        ?>
+                    <li>
+                        <div class="j_reviLinDes">
+                            <p><?= $i?><i class="fas fa-star"></i></p>
+                            <div class="j_ratBar" data-percent="<?= $percent?>">
+                                <div class="j_ratFill"  style="width:<?= $percent ?>%"></div>
+                            </div>
+                            <h4><?= $stars[$i]['value'] ?></h4>
+                        </div>
+                    </li>
+                    <?php } ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="j_commReviSec">
+        
+         <?php 
+         $count = 0;
+         foreach ($reviews as $review) {
+                if ($count < 3) {
+                   $class = "j_commReviBox active";
+                } else {
+                    $class = "j_commReviBox inactive";
+                }
+                $count++;
+                ?>
+        <div class="<?= $class ?>">
+            <Strong><?= $review['title'] ?></Strong>
+            <ul>
+                <?php
+                    for ($stars = 1; $stars <= 5; $stars++) {
+                        if ($review['stars'] >= $stars) {
+                            echo '<li><a href="javascript:void(0);"><i class="fas fa-star"></i></a></li>';
+                        } else {
+                            echo '<li><a class="j-grey" href="javascript:void(0);"><i class="fas fa-star"></i></a></li>';
+                        }
+                    }
+                ?>
+            </ul>
+            <p><?= $review['detail'] ?></p>
+            <a href="javascript:void(0);">More</a>
+            <div class="j_dateText">
+                <h5><?= $review['created_at'] ?> by <i><?= $review['nickname'] ?></i></h5>
+            </div>
+        </div>
+         <?php } ?>
+        <?php if($count > 3) { ?>
+        <div class="j_viewAllLink"><a href="javascript:void(0);">View All User Reviews</a></div>
+        <?php } ?>
+    </div>
+<?php } ?>
+<?php if($totalReviews > 0) { ?>
+<div class="reviewsMobile">
+    <div class="a_revHeader">
+        <a href="javascript:void(0);"><img src="<?= $this->getViewFileUrl('images/arrow-left.png'); ?>" alt=""/></a>
+        <h1>All Reviews</h1>
+    </div>
+    <div class="rewueBox">
+        <div class="j_commReviSec">
+             <?php 
+             $count = 0;
+             foreach ($reviews as $review) {
+                    $count++;
+                    ?>
+            <div class="<?= $class ?>">
+                <strong><?= $review['title'] ?> </strong>
+                <ul>
+                    <?php
+                        for ($stars = 1; $stars <= 5; $stars++) {
+                            if ($review['stars'] >= $stars) {
+                                echo '<li><a href="javascript:void(0);"><i class="fas fa-star"></i></a></li>';
+                            } else {
+                                echo '<li><a class="j-grey" href="javascript:void(0);"><i class="fas fa-star"></i></a></li>';
+                            }
+                        }
+                    ?>
+                </ul>
+                <p><?= $review['detail'] ?></p>
+                <a href="javascript:void(0);">More</a>
+                <div class="j_dateText">
+                    <h5><?= $review['created_at'] ?> by <i><?= $review['nickname'] ?></i></h5>
+                </div>
+            </div>
+             <?php } ?>
+        </div>
+    </div>
+</div>
+<?php } ?>

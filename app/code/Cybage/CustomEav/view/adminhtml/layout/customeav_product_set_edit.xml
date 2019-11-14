@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+ * BFL Cybage_CustomEav
+ *
+ * @category   Cybage_CustomEav
+ * @package    BFL Cybage_CustomEav
+ * @copyright  2019 All rights reserved.
+ * @license    Proprietary
+ * @author     BFL (bajaj finserv limited)
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <container name="adminhtml.customeav.catalog.product.set.edit.wrapper" htmlTag="div" htmlClass="admin__scope-old"><!-- @todo ui: remove arguments within .admin__scope-old -->
+                <block class="Cybage\CustomEav\Block\Adminhtml\Product\Attribute\Set\Edit"
+                name="adminhtml.customeav.catalog.product.set.edit"/>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

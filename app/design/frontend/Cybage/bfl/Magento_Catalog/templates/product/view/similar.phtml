@@ -1,0 +1,53 @@
+<?php
+/*  Copyright (c) BFL (bajaj finserv limited), India  */
+// @codingStandardsIgnoreFile
+?>
+<div class="p_compaermobilespdp"></div>
+<?php
+$products = $block->getSimilarProducts();
+$viewallUrls = $block->getViewAllUrl();
+$min = min(array_keys($viewallUrls));
+$viewallUrl = (!empty($viewallUrls[3])) ? $viewallUrls[3] : $viewallUrls[$min];?>
+
+<?php
+if(count($products) > 0 ){
+?>
+
+<section class="p_appleiphone ">
+    <div class="p_leftpaddslide">
+
+        <div class="p_titlehome">
+            <div class="p_lefttext">
+                <h2><?= __('Similar Products');?></h2>
+            </div>
+            <a href="<?= $viewallUrl?>" target="_blank"><?= __('View All');?></a>
+        </div>
+    </div>
+    <div class="p_leftpaddzeroslide leftPadd">
+        <div class="leftPortionBlur"> </div>
+        <div class="rightPortionBlur"></div>
+        <div class="p_slideapple">
+            <div class="iphonerow">
+                <div class="iphonetype p_iphoneside">
+                    <?php
+            foreach ($products as $product) {
+                ?>
+                    <a href="<?= $product['url'] ?>" class="p_applebox">
+                        <div class="p_iphoneslideimg">
+                            <img class="lazy" src="<?= $product['image'] ?>" data-src="<?= $product['image'] ?>" alt="<?= $product['name'] ?>">
+                        </div>
+                        <div class="p_iphonetextunder">
+                            <h3><?= $product['name'] ?></h3>
+                            <strong>
+                                <i class="fa fa-rupee"></i><?= $product['emi_starting_at'] ?>/month</strong>
+                        </div>
+                    </a>
+
+            <?php }
+                ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php } ?>
